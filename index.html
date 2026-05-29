@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Caso Clínico | Sarcopenia em paciente oncológica</title>
+<style>
+    :root{
+      --navy:#10203b;
+      --blue:#2c63ff;
+      --blue-soft:#eef4ff;
+      --amber:#f5b400;
+      --amber-soft:#fff7df;
+      --green:#1f9d6b;
+      --green-soft:#eaf8f1;
+      --red:#eb5a68;
+      --red-soft:#fff1f3;
+      --ink:#1a2335;
+      --muted:#617089;
+      --bg:#f4f7fb;
+      --card:#ffffff;
+      --line:#e4ebf4;
+      --shadow:0 18px 50px rgba(16,32,59,.08);
+      --radius:26px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; color:var(--ink); font-family:Inter, Roboto, Arial, Helvetica, sans-serif; line-height:1.6;
+      background:
+        radial-gradient(circle at top left, rgba(44,99,255,.09), transparent 28%),
+        radial-gradient(circle at top right, rgba(245,180,0,.12), transparent 26%),
+        var(--bg);
+    }
+    a{color:var(--blue); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .nav{position:sticky;top:0;z-index:50;background:rgba(244,247,251,.87);backdrop-filter:blur(14px);border-bottom:1px solid rgba(228,235,244,.9)}
+    .nav-inner{max-width:1220px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--navy)}
+    .nav-links{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .nav-links a{font-size:12px;font-weight:800;color:#45536b;padding:8px 11px;border-radius:999px;background:#fff;border:1px solid var(--line)}
+    .shell{max-width:1220px;margin:0 auto;padding:28px 22px 70px}
+    .hero{display:grid;grid-template-columns:1.18fr .82fr;gap:22px;align-items:stretch}
+    .panel,.card{background:rgba(255,255,255,.96);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:var(--radius)}
+    .hero-main{padding:34px}
+    .eyebrow{font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#75819a;margin-bottom:12px}
+    h1{margin:0 0 16px;font-size:clamp(36px,5vw,66px);line-height:.97;letter-spacing:-.055em;color:var(--navy)}
+    .subtitle{font-size:18px;color:#516178;max-width:780px;margin:0 0 20px}
+    .lead{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;padding:18px;border-radius:22px;background:linear-gradient(135deg,var(--blue-soft),var(--amber-soft));border:1px solid #dae6ff}
+    .lead-icon{width:42px;height:42px;border-radius:14px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:950}
+    .source{display:inline-flex;gap:6px;align-items:center;padding:5px 10px;border-radius:999px;border:1px solid #d8e4ff;background:var(--blue-soft);color:#284fa7;font-size:11px;font-weight:900;margin-top:8px}
+    .source.amber{background:var(--amber-soft);border-color:#ffe29a;color:#876000}
+    .source.green{background:var(--green-soft);border-color:#ccebdc;color:#166447}
+    .source.red{background:var(--red-soft);border-color:#ffdbe0;color:#9f3240}
+    .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding:20px;background:linear-gradient(180deg,#fff,#f9fbff)}
+    .kpi{position:relative;overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px;min-height:146px}
+    .kpi::after{content:"";position:absolute;right:-26px;top:-26px;width:86px;height:86px;border-radius:50%;background:rgba(44,99,255,.08)}
+    .kpi .label{font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#73829d}
+    .kpi .value{display:flex;align-items:baseline;gap:6px;font-size:36px;font-weight:950;line-height:1.02;color:var(--navy);margin:10px 0 4px;letter-spacing:-.04em;white-space:nowrap}
+    .kpi .value .unit{font-size:.58em;font-weight:850;letter-spacing:-.02em;color:#33415d}
+    .kpi .note{font-size:13px;color:#64748b}
+    section{margin-top:26px}
+    .section-head{display:block;margin:0 0 14px}
+    .section-head h2{margin:0;font-size:34px;line-height:1.05;letter-spacing:-.04em;color:var(--navy)}
+    .section-head p{margin:8px 0 0;color:#64748b;max-width:980px}.section-head .badge{margin-top:8px;display:inline-flex}
+    .activity{padding:24px}
+    .question-index{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+    .question-link{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:18px;background:#fff;border:1px solid #dce6ff;box-shadow:0 10px 22px rgba(16,32,59,.05);color:#24324b;text-decoration:none;min-height:104px}
+    .question-link:hover{transform:translateY(-2px);text-decoration:none;box-shadow:0 14px 28px rgba(44,99,255,.12)}
+    .qnum{width:34px;height:34px;border-radius:12px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;line-height:1;flex:0 0 auto}
+    .question-link strong{display:block;font-size:13px;line-height:1.3}
+    .question-link span{font-size:12px;color:#65748b}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{padding:22px}
+    .card h3{margin:0 0 10px;font-size:22px;line-height:1.12;letter-spacing:-.02em;color:var(--navy)}
+    .card p{margin:0 0 10px;color:#4f5f77}
+    .mini-label{display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:#f8fafc;font-size:12px;font-weight:900;color:#49566e;margin-bottom:12px}
+    .qa-stack{display:grid;gap:18px}
+    .qa-card{overflow:hidden;position:relative;border:1px solid #dce6ff;border-radius:28px;background:linear-gradient(135deg,#ffffff 0%,#f8fbff 100%);box-shadow:0 16px 36px rgba(16,32,59,.08)}
+    .qa-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;background:linear-gradient(180deg,var(--blue),var(--amber))}
+    .qa-top{display:grid;grid-template-columns:84px 1fr;gap:18px;padding:22px 24px 16px 28px;border-bottom:1px solid #e7eefb;background:rgba(238,244,255,.62)}
+    .qa-num{width:64px;height:64px;border-radius:20px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;line-height:1;font-weight:950;box-shadow:0 12px 22px rgba(16,32,59,.18)}
+    .qa-chip{display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border-radius:999px;background:var(--blue-soft);border:1px solid #d7e3ff;color:#284fa7;font-size:11px;font-weight:950;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+    .qa-question{font-size:22px;line-height:1.24;font-weight:950;color:var(--navy);letter-spacing:-.02em}
+    .qa-body{display:grid;grid-template-columns:1fr 1.05fr;gap:18px;padding:22px 24px 24px 28px}
+    .answer-box,.evidence-box{border-radius:22px;padding:18px}
+    .answer-box{background:#fff;border:1px solid var(--line)}
+    .evidence-box{background:var(--navy);color:#fff}
+    .answer-box h4,.evidence-box h4{margin:0 0 8px;font-size:18px}
+    .answer-pill{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border-radius:999px;background:var(--green-soft);border:1px solid #caecd8;color:#165f42;font-size:12px;font-weight:950;margin-bottom:10px}
+    .evidence-box ul{margin:8px 0 0;padding-left:18px;color:#ebf1ff}
+    .evidence-box li{margin:6px 0}
+    .mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+    .mini{border-radius:16px;background:#f8fafc;border:1px solid var(--line);padding:12px;font-size:13px;color:#4e5d75}
+    .mini strong{display:block;color:var(--navy);font-size:16px;margin-bottom:3px}
+    .figure-card{padding:22px}
+    .figcaption{margin-top:10px;font-size:13px;color:#5b6b83}
+    .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:#f7f9fc;border:1px solid var(--line);font-size:12px;font-weight:900;color:#4b566a}
+    .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+    .flow-step{border:1px solid var(--line);background:#fff;border-radius:20px;padding:16px;min-height:156px;position:relative}
+    .flow-step .n{width:30px;height:30px;border-radius:10px;background:var(--blue-soft);color:#2449a7;display:grid;place-items:center;font-size:13px;font-weight:950;margin-bottom:8px}
+    .flow-step h4{margin:0 0 6px;color:var(--navy);font-size:18px}
+    .flow-step p{margin:0;font-size:13px;color:#5c687c}
+    .summary-box{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;padding:18px;border-radius:22px;background:#0f1e39;color:#fff;margin-top:14px}
+    .summary-box .bubble{width:42px;height:42px;border-radius:15px;background:#fff;color:#10203b;display:grid;place-items:center;font-weight:950}
+    .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+    .tab-btn{cursor:pointer;border:1px solid var(--line);background:#fff;padding:10px 14px;border-radius:999px;font-weight:900;color:#42516b}
+    .tab-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .tab-panel{display:none}
+    .tab-panel.active{display:block}
+    .dose-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+    .dose{padding:14px;border-radius:18px;background:#f8fafc;border:1px solid var(--line)}
+    .dose strong{display:block;color:var(--navy);font-size:20px}
+    .exercise-table{width:100%;border-collapse:collapse;border-radius:18px;overflow:hidden;font-size:14px}
+    .exercise-table th,.exercise-table td{padding:13px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+    .exercise-table th{background:#f5f8ff;text-align:left;color:#25324a;font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+    .exercise-table tr:last-child td{border-bottom:none}
+    .week{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+    .day{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px;min-height:212px;box-shadow:0 8px 20px rgba(16,32,59,.05)}
+    .day .pse{display:inline-flex;padding:5px 9px;border-radius:999px;background:var(--amber-soft);color:#886000;font-size:11px;font-weight:950;margin-bottom:10px}
+    .day h4{margin:0 0 8px;font-size:19px;color:var(--navy)}
+    .day p{margin:0;color:#59667b;font-size:14px}
+    .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .rule{padding:18px;border-radius:22px;background:#fff;border:1px solid var(--line)}
+    .rule h3{margin:0 0 8px;color:var(--navy)}
+    .rule ul{margin:10px 0 0;padding-left:18px;color:#556377}
+    .team{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .person{padding:20px;border-radius:24px;background:#fff;border:1px solid var(--line);box-shadow:0 8px 24px rgba(16,32,59,.05)}
+    .avatar{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,var(--blue),var(--amber));color:#fff;display:grid;place-items:center;font-weight:950;margin-bottom:12px}
+    .person h3{font-size:18px;margin:0 0 6px;color:var(--navy)}
+    .person .role{font-size:12px;font-weight:900;color:#2f3f5d;background:#f5f8ff;border:1px solid var(--line);border-radius:14px;padding:9px;margin:10px 0}
+    .person p{font-size:13px;color:#5c6a81;margin:0 0 10px}
+    .refs{columns:2;column-gap:28px;font-size:13px;color:#4c576a}
+    .refs p{break-inside:avoid;margin:0 0 12px}
+    .footer-note{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:12px;color:#6b7280}
+    .print-btn{position:fixed;right:20px;bottom:20px;z-index:80;border:0;background:var(--navy);color:#fff;border-radius:999px;padding:13px 18px;font-weight:950;box-shadow:0 14px 28px rgba(16,32,59,.22);cursor:pointer}
+    .muted{color:#66758c}
+    .emph{font-weight:950;color:var(--red)}
+    .mb-0{margin-bottom:0}
+
+    .period-table th:nth-child(1), .period-table td:nth-child(1){width:14%}
+    .period-table th:nth-child(2), .period-table td:nth-child(2){width:34%}
+    .period-table th:nth-child(3), .period-table td:nth-child(3){width:auto}
+    .master-table{font-size:12px}
+    .master-table th,.master-table td{padding:10px 8px;line-height:1.45}
+    .master-table th:nth-child(1){width:20%}
+    .master-table th:nth-child(2){width:16%}
+    .master-table th:nth-child(3){width:44%}
+    .master-table th:nth-child(4){width:20%}
+    .period-table th:nth-child(4), .period-table td:nth-child(4){width:24%}
+    .period-table td{line-height:1.45}
+    .load-col{font-weight:700;color:#33415c;background:#fbfcff}
+
+
+    .embedded-figure{margin-top:10px;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#fff;box-shadow:0 10px 24px rgba(16,32,59,.06)}
+    .embedded-figure img{display:block;width:100%;height:auto}
+    .embedded-figure figcaption{padding:12px 14px 0;color:#5b6b83;font-size:13px}
+    .figure-full{margin-top:18px}
+
+    .full-span{grid-column:1 / -1}
+    .figure-hero{padding:24px 24px 18px}
+    .figure-hero .embedded-figure{max-width:980px;margin:12px auto 0}
+    .figure-compact .embedded-figure{max-width:100%;margin-top:10px}
+    .clean-note{padding:16px 18px;border-radius:20px;background:#f8fbff;border:1px solid var(--line);color:#53627a}
+
+
+    .pdf-menu{padding:24px;background:linear-gradient(135deg,#ffffff 0%,#f8fbff 62%,#fff7df 100%)}
+    .pdf-menu h2{margin:0 0 8px;color:var(--navy);font-size:30px;letter-spacing:-.035em}
+    .pdf-menu p{margin:0;color:#5a6981;max-width:920px}
+    .menu-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:16px}
+    .menu-card{display:block;text-decoration:none;color:#22304a;background:#fff;border:1px solid #dce6ff;border-radius:18px;padding:14px;min-height:118px;box-shadow:0 10px 22px rgba(16,32,59,.05)}
+    .menu-card:hover{text-decoration:none;transform:translateY(-1px);box-shadow:0 14px 28px rgba(44,99,255,.12)}
+    .menu-card .menu-number{width:34px;height:34px;border-radius:12px;background:#10203b;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:950;line-height:1;margin-bottom:9px}
+    .menu-card strong{display:block;font-size:13px;line-height:1.25;color:#10203b;margin-bottom:5px}
+    .menu-card span:last-child{font-size:12px;color:#65748b;line-height:1.25}
+
+    .bio-dashboard{padding:26px; background:linear-gradient(135deg,#ffffff 0%,#f8fbff 54%,#fff7df 100%)}
+    .bio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+    .bio-box{position:relative;overflow:hidden;padding:18px;border-radius:22px;border:1px solid #dfe8f7;background:#fff;box-shadow:0 10px 24px rgba(16,32,59,.06)}
+    .bio-box::after{content:"";position:absolute;right:-34px;top:-34px;width:92px;height:92px;border-radius:50%;background:rgba(44,99,255,.07)}
+    .bio-box h3{margin:0 0 8px;color:var(--navy);font-size:20px;letter-spacing:-.02em}
+    .bio-box p{margin:0 0 10px;color:#4f5f77;font-size:14px}
+    .mol-row{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 0}
+    .mol{display:inline-flex;padding:5px 8px;border-radius:999px;font-size:11px;font-weight:950;background:#eef4ff;color:#2449a7;border:1px solid #d7e4ff}
+    .mol.red{background:#fff1f3;color:#9f3240;border-color:#ffdbe0}.mol.amber{background:#fff7df;color:#865f00;border-color:#ffe29a}.mol.green{background:#eaf8f1;color:#166447;border-color:#ccebdc}.mol.purple{background:#f3edff;color:#6143a6;border-color:#dfd1ff}
+    .mechanism-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+    .mech-card{border-radius:20px;background:#10203b;color:#fff;padding:16px;min-height:162px}
+    .mech-card h4{margin:0 0 8px;color:#fff;font-size:17px}.mech-card p{margin:0;color:#e6edff;font-size:13px}.mech-card .source{background:#fff;color:#10203b;border-color:#fff;margin-top:10px}
+    .cartoon-infographic{margin-top:18px;border-radius:26px;background:#fff;border:1px solid #dfe8f7;padding:14px;box-shadow:0 12px 30px rgba(16,32,59,.07)}
+    .bio-note{border-left:5px solid var(--amber);background:#fffaf0;border-radius:18px;padding:15px 16px;margin:14px 0;color:#4f5f77}
+    .bio-note strong{color:var(--navy)}
+
+
+    .phase-matrix{padding:26px;background:linear-gradient(135deg,#ffffff 0%,#f8fbff 58%,#fff7df 100%)}
+    .phase-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:16px 0}
+    .phase-card{background:#fff;border:1px solid #dfe8f7;border-radius:22px;padding:18px;box-shadow:0 10px 24px rgba(16,32,59,.06);position:relative;overflow:hidden}
+    .phase-card:before{content:"";position:absolute;right:-30px;top:-30px;width:86px;height:86px;border-radius:50%;background:rgba(245,180,0,.11)}
+    .phase-card h3{margin:0 0 10px;color:var(--navy);font-size:20px;letter-spacing:-.02em}
+    .phase-card p{margin:0 0 10px;color:#4f5f77;font-size:14px}
+    .decision-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+    .decision-card{border-radius:20px;background:#10203b;color:#fff;padding:16px;min-height:170px}
+    .decision-card h4{margin:0 0 8px;color:#fff;font-size:17px}.decision-card p{margin:0;color:#e6edff;font-size:13px}
+    .lab-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:14px}
+    .lab-card{border:1px solid var(--line);background:#fff;border-radius:18px;padding:14px;min-height:130px}
+    .lab-card strong{display:block;color:var(--navy);font-size:15px;margin-bottom:6px}.lab-card span{display:block;color:#5b687d;font-size:13px}
+
+    @media(max-width:1024px){.hero,.grid-2,.qa-body{grid-template-columns:1fr}.question-index,.flow,.week,.rules,.team,.grid-3,.dose-grid,.bio-grid,.mechanism-strip,.menu-grid,.phase-grid,.decision-strip,.lab-grid{grid-template-columns:1fr 1fr}.refs{columns:1}}
+    @media(max-width:720px){.nav-links{display:none}.hero-main{padding:24px}.question-index,.week,.rules,.team,.grid-3,.dose-grid,.mini-grid,.bio-grid,.mechanism-strip,.menu-grid,.phase-grid,.decision-strip,.lab-grid{grid-template-columns:1fr}.qa-top,.qa-body{grid-template-columns:1fr}.qa-num{width:56px;height:56px}.kpis{grid-template-columns:1fr}.flow{grid-template-columns:1fr}.print-btn{display:none}}
+    @media print{
+      .nav,.print-btn{display:none!important}
+      body{background:#fff}
+      .panel,.card,.person,.day{box-shadow:none}
+      .shell{padding:24px 22px 40px}
+      .tabs{display:none!important}
+      .tab-panel{display:block!important;margin-top:18px}
+      .tab-panel + .tab-panel{border-top:1px solid var(--line);padding-top:18px}
+      .menu-card,.question-link,a{cursor:pointer}
+    }
+  </style>
+</head>
+<body>
+<div class="nav">
+<div class="nav-inner">
+<div class="brand">UFSCAR • Fisiologia do Exercício e Câncer</div>
+<div class="nav-links">
+<a href="#caso">Caso</a>
+<a href="#questoes">Perguntas</a>
+<a href="#figuras">Figuras</a>
+<a href="#biojustificativas">Bioquímica</a>
+<a href="#prescricao">Treinos</a>
+<a href="#periodizacao">Periodização</a>
+<a href="#matrizdecisao">Matriz molecular</a>
+<a href="#equipe">Equipe</a>
+<a href="#referencias">Referências</a>
+</div>
+</div>
+</div>
+<button class="print-btn" onclick="window.print()">Salvar / imprimir PDF</button>
+<main class="shell">
+<header class="hero" id="caso">
+<div class="panel hero-main">
+<div class="eyebrow">Caso clínico • câncer gástrico • sarcopenia</div>
+<h1>Sarcopenia em paciente oncológica</h1>
+<p class="subtitle">Material didático em estilo dashboard para responder às questões da atividade, explicar o raciocínio clínico e traduzir a evidência científica em uma prescrição de exercício segura, progressiva e fácil de compreender.</p>
+<div class="lead">
+<div class="lead-icon">!</div>
+<div>
+<strong>Ideia central:</strong> esta paciente não apresenta apenas “fraqueza” inespecífica. O conjunto de <strong>câncer gástrico + perda ponderal acentuada + baixa força palmar + panturrilha reduzida + velocidade de marcha baixa</strong> compõe um quadro típico de <strong>sarcopenia secundária ao câncer</strong>, provavelmente já com repercussão funcional importante. <span class="source amber">Cruz-Jentoft et al., 2019</span>
+</div>
+</div>
+</div>
+<div class="panel kpis">
+<div class="kpi"><div class="label">Perfil</div><div class="value">60 <span class="unit">anos</span></div><div class="note">Paciente feminina com neoplasia maligna do corpo do estômago.</div></div>
+<div class="kpi"><div class="label">Perda ponderal</div><div class="value">&gt;10 <span class="unit">kg</span></div><div class="note">em 60 dias, sugerindo risco nutricional e catabolismo.</div></div>
+<div class="kpi"><div class="label">Força palmar</div><div class="value">15 <span class="unit">kgf</span></div><div class="note">abaixo do ponto de corte feminino &lt;16 kgf.</div></div>
+<div class="kpi"><div class="label">Marcha em 4 m</div><div class="value">0,7 <span class="unit">m/s</span></div><div class="note">baixo desempenho físico, abaixo de 0,8 m/s.</div></div>
+</div>
+</header>
+<section class="panel pdf-menu" id="sumario">
+<h2>Sumário interativo do PDF</h2>
+<p>Use os cards abaixo para navegar pelo documento. No PDF, os blocos funcionam como links internos para as seções principais; os links Lattes, ORCID e referências externas permanecem clicáveis.</p>
+<div class="menu-grid">
+<a class="menu-card" href="#questoes"><span class="menu-number">01</span><strong>Perguntas e respostas</strong><span>Diagnóstico, sinais, treino e prescrição.</span></a>
+<a class="menu-card" href="#figuras"><span class="menu-number">02</span><strong>Figuras e plots</strong><span>Infográficos e gráficos comparativos.</span></a>
+<a class="menu-card" href="#biojustificativas"><span class="menu-number">03</span><strong>Bioquímica oncológica</strong><span>Inflamação, lactato, proteólise e fadiga.</span></a>
+<a class="menu-card" href="#periodizacao"><span class="menu-number">04</span><strong>Periodização 12 semanas</strong><span>Tabela-mestre FITT-VP e progressão.</span></a>
+<a class="menu-card" href="#equipe"><span class="menu-number">05</span><strong>Equipe</strong><span>Atribuições e perfis profissionais.</span></a>
+<a class="menu-card" href="#referencias"><span class="menu-number">06</span><strong>Referências</strong><span>Base bibliográfica autor-ano.</span></a>
+</div>
+</section>
+<section class="panel activity" id="questoes">
+<div class="section-head">
+<h2>Perguntas da atividade</h2>
+<p>As quatro questões abaixo organizam o raciocínio clínico: primeiro definimos o diagnóstico funcional, depois identificamos os sinais de suspeição, escolhemos o tipo de treinamento e, por fim, detalhamos a prescrição semanal.</p>
+</div>
+<div class="question-index">
+<a class="question-link" href="#q1"><div class="qnum">1</div><div><strong>Qual o diagnóstico relacionado à desordem muscular?</strong><span>Identificação do quadro de sarcopenia.</span></div></a>
+<a class="question-link" href="#q2"><div class="qnum">2</div><div><strong>Quais sinais e sintomas fizeram suspeitar do quadro?</strong><span>Interpretação dos achados clínicos e funcionais.</span></div></a>
+<a class="question-link" href="#q3"><div class="qnum">3</div><div><strong>Qual tipo de treinamento é recomendado? Por quê?</strong><span>Escolha da estratégia de exercício.</span></div></a>
+<a class="question-link" href="#q4"><div class="qnum">4</div><div><strong>Como prescrever detalhadamente o treinamento?</strong><span>Plano semanal, progressão e segurança.</span></div></a>
+</div>
+</section>
+<section class="qa-stack">
+<article class="qa-card" id="q1">
+<div class="qa-top">
+<div class="qa-num">1</div>
+<div>
+<div class="qa-chip">Pergunta 1</div>
+<div class="qa-question">Qual o diagnóstico relacionado à desordem muscular que a paciente possivelmente apresenta?</div>
+</div>
+</div>
+<div class="qa-body">
+<div class="answer-box">
+<div class="answer-pill">Resposta direta</div>
+<h4>Sarcopenia secundária ao câncer, possivelmente grave</h4>
+<p>A paciente apresenta quadro <strong>compatível com sarcopenia associada ao câncer</strong>, porque há alteração simultânea de três domínios: <strong>força muscular</strong>, <strong>massa muscular estimada</strong> e <strong>desempenho físico</strong>. Esse conjunto, somado à perda ponderal importante e ao contexto de câncer gástrico, torna o quadro clinicamente relevante e provavelmente mais avançado.</p>
+<p>Em outras palavras, a paciente não tem apenas um teste alterado. Ela reúne <strong>15 kgf de preensão palmar</strong>, <strong>30 cm de circunferência de panturrilha</strong> e <strong>0,7 m/s na velocidade de marcha</strong>. Quando os três componentes caminham na mesma direção, a suspeita diagnóstica se fortalece bastante.</p>
+<div class="mini-grid">
+<div class="mini"><strong>15 kgf</strong> indica baixa força muscular em mulher.</div>
+<div class="mini"><strong>30 cm</strong> sugere redução de massa muscular periférica.</div>
+<div class="mini"><strong>0,7 m/s</strong> mostra desempenho funcional reduzido.</div>
+</div>
+</div>
+<div class="evidence-box">
+<h4>Justificativa clínica e fontes</h4>
+<ul>
+<li>A força de preensão palmar é o marcador inicial mais importante da sarcopenia no algoritmo do EWGSOP2. Para mulheres, valores <strong>&lt;16 kgf</strong> sugerem baixa força muscular (Cruz-Jentoft et al., 2019).</li>
+<li>A circunferência de panturrilha <strong>&lt;31 cm</strong> é útil como triagem para baixa massa muscular em idosos e pacientes fragilizados (Cruz-Jentoft et al., 2019).</li>
+<li>Velocidade de marcha <strong>&lt;0,8 m/s</strong> indica baixo desempenho físico e maior vulnerabilidade funcional (Studenski et al., 2011; Cruz-Jentoft et al., 2019).</li>
+<li>O contexto de câncer e perda de peso rápida aumenta o risco de sarcopenia secundária e possível caquexia, exigindo abordagem multiprofissional (Anjanappa et al., 2020; Ligibel et al., 2022).</li>
+</ul>
+</div>
+</div>
+</article>
+<article class="qa-card" id="q2">
+<div class="qa-top">
+<div class="qa-num">2</div>
+<div>
+<div class="qa-chip">Pergunta 2</div>
+<div class="qa-question">Quais sinais e sintomas relatados fizeram com que os profissionais desconfiassem deste quadro?</div>
+</div>
+</div>
+<div class="qa-body">
+<div class="answer-box">
+<div class="answer-pill">Resposta direta</div>
+<h4>Fadiga, cansaço excessivo, ansiedade e perda ponderal acentuada</h4>
+<p>Os profissionais suspeitaram de sarcopenia porque a paciente apresentava <strong>fadiga generalizada</strong>, <strong>cansaço demasiado</strong>, <strong>ansiedade</strong> e, sobretudo, uma <strong>perda de peso maior que 10 kg em 60 dias</strong>. Além disso, a triagem com <strong>SARC-F</strong> apontou risco para sarcopenia, justificando a avaliação objetiva da força, da massa muscular estimada e do desempenho físico.</p>
+<p>O escore numérico do SARC-F não foi explicitado no enunciado; para fins didáticos, deve-se registrar que <strong>pontuação ≥4</strong> indica risco para sarcopenia e justifica avaliação objetiva complementar de força, massa e desempenho físico.</p>
+<p>Do ponto de vista didático, esses sinais são importantes porque mostram que a suspeita surgiu primeiro no campo clínico e nutricional. A confirmação veio depois, com as medidas funcionais. Esse fluxo — <em>sintomas → triagem → avaliação objetiva</em> — é exatamente o que se espera em boa prática clínica.</p>
+<div class="mini-grid">
+<div class="mini"><strong>Fadiga</strong> sugere menor reserva funcional e pior tolerância ao esforço.</div>
+<div class="mini"><strong>Perda de peso</strong> indica risco de catabolismo e perda de massa magra.</div>
+<div class="mini"><strong>SARC-F</strong> foi usado corretamente como instrumento de triagem.</div>
+</div>
+</div>
+<div class="evidence-box">
+<h4>Justificativa clínica e fontes</h4>
+<ul>
+<li>Perda de peso rápida em pacientes com câncer é um sinal de alerta para desnutrição, catabolismo e perda muscular (Anjanappa et al., 2020).</li>
+<li>Fadiga relacionada ao câncer se associa a pior função física, menor tolerância ao tratamento e redução do nível de atividade (Ligibel et al., 2022).</li>
+<li>O SARC-F não fecha diagnóstico, mas é útil para <strong>levantar suspeita</strong> e selecionar quem precisa de avaliação adicional (Cruz-Jentoft et al., 2019).</li>
+<li>No caso em questão, a própria história clínica já justificava encaminhamento para fisioterapia e educação física, antes mesmo dos testes objetivos.</li>
+</ul>
+</div>
+</div>
+</article>
+<article class="qa-card" id="q3">
+<div class="qa-top">
+<div class="qa-num">3</div>
+<div>
+<div class="qa-chip">Pergunta 3</div>
+<div class="qa-question">Qual tipo de treinamento físico é recomendado nesse caso? Por que?</div>
+</div>
+</div>
+<div class="qa-body">
+<div class="answer-box">
+<div class="answer-pill">Resposta direta</div>
+<h4>Treinamento combinado: resistido + aeróbico + funcional</h4>
+<p>O modelo mais indicado é o <strong>treinamento combinado</strong>, porque ele responde a problemas diferentes ao mesmo tempo. O <strong>treino resistido</strong> atua mais diretamente sobre força e massa muscular. O <strong>treino aeróbico</strong> ajuda a reduzir fadiga, melhorar condicionamento e favorecer qualidade de vida. Já os <strong>exercícios funcionais</strong> são importantes para traduzir esse ganho em tarefas reais, como caminhar melhor, levantar da cadeira e manter autonomia.</p>
+<p>Didaticamente, a lógica é simples: como a paciente está mais fraca, mais lenta e mais cansada, não basta caminhar apenas. Ela precisa de estímulo específico para músculo, mas também de atividade aeróbica segura e de treino funcional para recuperar a capacidade de se mover no dia a dia.</p>
+<div class="mini-grid">
+<div class="mini"><strong>Resistido</strong> melhora força, massa magra e capacidade de levantar-se e caminhar.</div>
+<div class="mini"><strong>Aeróbico</strong> reduz fadiga e melhora o condicionamento cardiorrespiratório.</div>
+<div class="mini"><strong>Funcional</strong> treina equilíbrio, marcha e transferência para a vida diária.</div>
+</div>
+</div>
+<div class="evidence-box">
+<h4>Justificativa clínica e fontes</h4>
+<ul>
+<li>Em pacientes com câncer e sarcopenia, o treino resistido é o componente mais importante para melhorar força e massa muscular (Liu et al., 2024; Tan et al., 2024).</li>
+<li>Diretrizes oncológicas recomendam exercício aeróbico + resistido durante o tratamento, de forma individualizada e progressiva (Ligibel et al., 2022; Avancini et al., 2025).</li>
+<li>Treinamento combinado mostrou preservação de massa muscular e menor perda de força em pacientes oncológicos quando comparado com caminhada isolada (D'silva et al., 2025).</li>
+<li>Em sarcopenia, programas multicomponentes são úteis porque combinam ganhos de força, função e desempenho físico (Shen et al., 2023; Hurst et al., 2022).</li>
+</ul>
+</div>
+</div>
+</article>
+<article class="qa-card" id="q4">
+<div class="qa-top">
+<div class="qa-num">4</div>
+<div>
+<div class="qa-chip">Pergunta 4</div>
+<div class="qa-question">Prescreva, de forma detalhada, o treinamento físico adequado para esse caso clínico, considerando as informações fornecidas e as recomendações mais recentes.</div>
+</div>
+</div>
+<div class="qa-body">
+<div class="answer-box">
+<div class="answer-pill">Resposta direta</div>
+<h4>Prescrição do treinamento físico clínico: período de 12 semanas</h4>
+<p>A prescrição adota o modelo de <strong>Treinamento Físico Combinado/Multicomponente</strong> preconizado pelas diretrizes internacionais do American College of Sports Medicine (Campbell et al., 2019; Ozemek et al., 2025). O programa é periodizado de forma linear progressiva, respeitando a fragilidade inicial da paciente, com força de <strong>15 kgf</strong> e velocidade de marcha de <strong>0,7 m/s</strong>.</p>
+<p>A estruturação do treinamento físico baseia-se no protocolo <strong>FITT-VP</strong> do Consenso de Oncologia do ACSM, cruzando as diretrizes internacionais com as necessidades clínicas da paciente. As sessões integradas ocorrerão <strong>3 vezes por semana</strong>, em segundas, quartas e sextas, evoluindo de <strong>25 para 55 minutos</strong>, com intensidade controlada de nível leve a moderado pela <strong>Escala de Borg CR-10</strong>.</p>
+<p>Os focos centrais são atenuar o catabolismo tumoral, recuperar a massa muscular periférica, considerando panturrilha &lt;31 cm, e mitigar a fadiga oncológica crônica.</p>
+<div class="mini-grid">
+<div class="mini"><strong>Frequência</strong> 3 sessões integradas/semana: segundas, quartas e sextas.</div>
+<div class="mini"><strong>Intensidade</strong> Borg CR-10: 3–4 → 4–5 → 5–6 → 6–7 sem exaustão.</div>
+<div class="mini"><strong>Progressão</strong> linear, gradual, supervisionada e sintoma-guiada por 12 semanas.</div>
+</div>
+</div>
+<div class="evidence-box">
+<h4>Justificativa clínica e fontes</h4>
+<ul>
+<li>Programas efetivos em oncologia priorizam exercício combinado, com componentes aeróbicos, resistidos e funcionais, adaptados à tolerância individual (Campbell et al., 2019; ACSM, 2021; Ozemek et al., 2025).</li>
+<li>Para pacientes oncológicos descondicionados e sarcopênicos, a progressão linear por blocos permite aumentar tempo, volume e complexidade sem impor exaustão precoce.</li>
+<li>O controle por Borg CR-10 permite modular o esforço conforme fadiga, ingestão alimentar, sintomas gastrointestinais, tratamento oncológico e recuperação em 24 horas.</li>
+<li>A proposta mantém o foco na função: força de membros inferiores, marcha, equilíbrio, autonomia e redução do ciclo fadiga-inatividade.</li>
+</ul>
+</div>
+</div>
+</article>
+</section>
+<section class="grid-2" id="figuras">
+<div class="card figure-card figure-hero full-span">
+<div class="section-head" style="margin-bottom:10px">
+<h2 style="font-size:30px">Figura 1. Do câncer gástrico à sarcopenia funcional</h2>
+<span class="badge">cartoon científico elegante</span>
+<p>Esta figura sintetiza o percurso fisiopatológico central do caso: câncer gástrico, menor ingestão, inflamação e catabolismo convergem para perda de força, fadiga e sarcopenia funcional.</p>
+</div>
+<figure class="embedded-figure">
+<img alt="Infográfico em estilo cartoon científico elegante mostrando a progressão do câncer gástrico à sarcopenia funcional." src="assets/figura_1_cancer_gastrico_sarcopenia_funcional.png"/>
+</figure>
+<p class="figcaption"><span class="source">Anjanappa et al., 2020</span> <span class="source amber">Ligibel et al., 2022</span> <span class="source green">Liu et al., 2024</span></p>
+</div>
+<div class="card figure-card figure-compact">
+<div class="section-head" style="margin-bottom:10px">
+<h2 style="font-size:30px">Quadro 1. Algoritmo diagnóstico aplicado ao caso</h2>
+<span class="badge">stepper clínico</span>
+<p>O stepper clínico abaixo resume a lógica sequencial do diagnóstico funcional, da triagem ao fechamento clínico do caso.</p>
+</div>
+<div class="flow">
+<div class="flow-step"><div class="n">1</div><h4>Triagem</h4><p>SARC-F sugestivo/positivo e história clínica com fadiga, cansaço e perda de peso.</p></div>
+<div class="flow-step"><div class="n">2</div><h4>Força</h4><p>Preensão palmar = <strong>15 kgf</strong>, abaixo do corte feminino de 16 kgf.</p></div>
+<div class="flow-step"><div class="n">3</div><h4>Massa</h4><p>Panturrilha = <strong>30 cm</strong>, abaixo de 31 cm, sugerindo massa reduzida.</p></div>
+<div class="flow-step"><div class="n">4</div><h4>Função</h4><p>Marcha = <strong>0,7 m/s</strong>, abaixo de 0,8 m/s, indicando baixo desempenho.</p></div>
+<div class="flow-step"><div class="n">5</div><h4>Conclusão</h4><p>Sarcopenia secundária ao câncer, com impacto funcional importante.</p></div>
+</div>
+<div class="summary-box">
+<div class="bubble">i</div>
+<div>O raciocínio é progressivo: <strong>suspeita clínica → confirmação funcional → decisão terapêutica</strong>. Isso torna o caso didático e mostra como triagem e avaliação objetiva se complementam. <span class="source amber">Cruz-Jentoft et al., 2019</span> <span class="source">Studenski et al., 2011</span></div>
+</div>
+</div>
+<div class="card figure-card figure-hero full-span">
+<div class="section-head" style="margin-bottom:10px">
+<h2 style="font-size:30px">Figura 2. Questão 4 — prescrição do treinamento físico clínico (12 semanas)</h2>
+<span class="badge">cartoon científico elegante</span>
+<p>A Figura 2 sintetiza visualmente a periodização da Questão 4 em 12 semanas, organizada por blocos, fases, parâmetros FITT-VP, exercícios principais e tomadas de decisão clínicas.</p>
+</div>
+<figure class="embedded-figure">
+<img alt="Infográfico em estilo cartoon científico elegante resumindo a periodização de 12 semanas do treinamento físico clínico." src="assets/figura_2_prescricao_treinamento_12semanas.png"/>
+</figure>
+<p class="figcaption"><span class="source">Campbell et al., 2019</span> <span class="source amber">Ozemek et al., 2025</span></p>
+</div>
+
+
+</section>
+<section class="panel bio-dashboard" id="biojustificativas">
+<div class="section-head">
+<h2>Justificativas bioquímicas e oncológicas</h2>
+<p>Esta seção aprofunda o “porquê” biológico do caso. A sarcopenia relacionada ao câncer não resulta apenas de menor alimentação; ela emerge da convergência entre inflamação, metabolismo tumoral, balanço energético negativo, proteólise muscular, disfunção mitocondrial, fadiga e inatividade.</p>
+</div>
+
+<div class="bio-grid">
+<div class="bio-box"><h3>1. Balanço energético negativo</h3><p>Anorexia, náusea, saciedade precoce e menor ingestão reduzem energia e aminoácidos disponíveis. Sem substrato suficiente, o músculo perde capacidade de manter síntese proteica e reparo tecidual.</p><span class="source">Fearon et al., 2011</span><div class="mol-row"><span class="mol amber">proteína ↓</span><span class="mol amber">energia ↓</span><span class="mol red">peso ↓</span></div></div>
+<div class="bio-box"><h3>2. Inflamação sistêmica</h3><p>Citocinas como IL-6, TNF-α e IL-1β ativam vias pró-catabólicas. STAT3 e NF-κB funcionam como interruptores moleculares que favorecem proteólise, estresse oxidativo e fadiga.</p><span class="source red">Anjanappa et al., 2020</span><div class="mol-row"><span class="mol red">IL-6</span><span class="mol red">TNF-α</span><span class="mol red">NF-κB</span><span class="mol red">STAT3</span></div></div>
+<div class="bio-box"><h3>3. Lactato tumoral</h3><p>Tumores glicolíticos podem produzir lactato em excesso. Evidências recentes conectam lactato circulante, GPR81 e caquexia tumoral, sugerindo que o lactato atua como sinal metabólico, não apenas resíduo.</p><span class="source">Liu et al., 2024</span><div class="mol-row"><span class="mol purple">lactato ↑</span><span class="mol purple">GPR81</span><span class="mol amber">custo energético ↑</span></div></div>
+<div class="bio-box"><h3>4. Proteólise muscular</h3><p>No músculo esquelético, a inflamação e os sinais tumorais aumentam rotas de degradação, como ubiquitina-proteassoma e autofagia-lisossomo. Assim, proteínas contráteis são perdidas progressivamente.</p><span class="source amber">Argilés et al., 2014</span><div class="mol-row"><span class="mol red">ubiquitina</span><span class="mol red">proteassoma</span><span class="mol red">autofagia</span></div></div>
+<div class="bio-box"><h3>5. Resistência anabólica</h3><p>Mesmo quando há algum aporte nutricional, o músculo inflamado responde pior aos estímulos anabólicos. Por isso, nutrição isolada pode ser insuficiente; o exercício resistido ajuda a restaurar sinal mecânico.</p><span class="source green">Hurst et al., 2022</span><div class="mol-row"><span class="mol green">mTOR</span><span class="mol green">mecanotransdução</span><span class="mol amber">síntese proteica</span></div></div>
+<div class="bio-box"><h3>6. Fadiga e inatividade</h3><p>A perda muscular e a pior bioenergética aumentam fadiga. A paciente se movimenta menos, perde estímulo mecânico e aprofunda o ciclo de descondicionamento e sarcopenia funcional.</p><span class="source">Ligibel et al., 2022</span><div class="mol-row"><span class="mol blue">atividade ↓</span><span class="mol red">fadiga ↑</span><span class="mol amber">marcha ↓</span></div></div>
+</div>
+<div class="mechanism-strip">
+<div class="mech-card"><h4>Por que resistido?</h4><p>O treino resistido fornece tensão mecânica, recrutamento neuromuscular e estímulo anabólico. É o eixo mais específico para força e massa magra.</p><span class="source">Liu et al., 2024</span></div>
+<div class="mech-card"><h4>Por que aeróbico?</h4><p>O aeróbico melhora tolerância ao esforço, aptidão cardiorrespiratória e fadiga, sem substituir o estímulo de força.</p><span class="source">Ligibel et al., 2022</span></div>
+<div class="mech-card"><h4>Por que funcional?</h4><p>O treino funcional transforma força em autonomia: marcha, equilíbrio, levantar da cadeira e atividades diárias.</p><span class="source">Shen et al., 2023</span></div>
+<div class="mech-card"><h4>Por que nutrição?</h4><p>Sem energia e proteína suficientes, o músculo tem menor capacidade de responder ao treino e regenerar tecido.</p><span class="source">Storck et al., 2023</span></div>
+</div>
+</section>
+
+<section class="panel" id="periodizacao" style="padding:26px">
+<div class="section-head">
+<h2>Tabela-mestre de periodização semanal: semanas 1 a 12</h2>
+<p>Prescrição clínica em modelo combinado/multicomponente, organizada por blocos progressivos. Cada sessão integra componente aeróbico, resistido e equilíbrio/funcionalidade, com controle pela Escala de Borg CR-10 e ajuste conforme fadiga, sintomas e tolerância clínica.</p>
+</div>
+<div class="card">
+<span class="mini-label">Atividade colaborativa • Questão 4</span>
+<h3>Prescrição do treinamento físico clínico: período de 12 semanas</h3>
+<p>A prescrição adota o modelo de <strong>Treinamento Físico Combinado/Multicomponente</strong> preconizado pelas diretrizes internacionais do American College of Sports Medicine (Campbell et al., 2019; Ozemek et al., 2025). O programa é periodizado de forma linear progressiva, respeitando a fragilidade inicial da paciente, com força de 15 kgf e velocidade de marcha de 0,7 m/s. A estruturação do treinamento físico baseia-se no protocolo <strong>FITT-VP</strong> do Consenso de Oncologia do ACSM, cruzando as diretrizes internacionais com as necessidades clínicas da paciente.</p>
+<p>As sessões integradas ocorrerão <strong>3 vezes por semana</strong>, em segundas, quartas e sextas, evoluindo de <strong>25 para 55 minutos</strong>, com intensidade controlada de nível leve a moderado pela <strong>Escala de Borg CR-10</strong>. Os focos centrais são atenuar o catabolismo tumoral, recuperar a massa muscular periférica, considerando panturrilha &lt;31 cm, e mitigar a fadiga oncológica crônica.</p>
+<p><strong>Suporte nutricional integrado:</strong> recomenda-se ingestão proteica de 1,2-1,5 g/kg/dia e aporte energético de 30-35 kcal/kg/dia, sincronizados com as sessões de treino para otimizar síntese proteica, recuperação e preservação de massa magra (Hurst et al., 2022; Storck et al., 2023).</p>
+</div>
+<div class="card" style="margin-top:18px">
+<h3>Tabela-mestre consolidada da periodização de 12 semanas</h3>
+<table class="exercise-table period-table master-table">
+          <thead>
+            <tr>
+              <th>Fase / semanas</th>
+              <th>Parâmetros FITT-VP</th>
+              <th>Prescrição integrada</th>
+              <th>Critério técnico / decisão</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Adaptação neuromuscular e tolerância ao esforço</strong><br>Semanas 1-2</td>
+              <td>F: 3x/sem<br>I: Borg 3-4<br>Sessão: ~25 min<br>Descanso: 120 s</td>
+              <td><strong>Aeróbico:</strong> cicloergômetro ou caminhada em plano horizontal, 5-10 min contínuos.<br><strong>Resistido:</strong> sentar e levantar com apoio das mãos 2x8; remada sentada com faixa elástica leve 2x10; elevação de panturrilha sentada 2x12.<br><strong>Equilíbrio:</strong> apoio unipodal com suporte das mãos 2x20 s por perna.</td>
+              <td>Iniciar leve, com apoio e pausas longas. Progredir apenas se não houver piora da fadiga nas 24 h seguintes.</td>
+            </tr>
+            <tr>
+              <td><strong>Sobrecarga linear progressiva inicial</strong><br>Semanas 3-4</td>
+              <td>F: 3x/sem<br>I: Borg 4-5<br>Sessão: ~30 min<br>Descanso: 90 s</td>
+              <td><strong>Aeróbico:</strong> cicloergômetro ou caminhada com variação leve de inclinação, 15 min contínuos.<br><strong>Resistido:</strong> sentar e levantar sem apoio das mãos 3x8; remada com faixa de maior tensão 3x10; panturrilha em pé com apoio das mãos 3x12.<br><strong>Equilíbrio:</strong> marcha estacionária elevando joelhos 2x30 s.</td>
+              <td>Aumentar volume antes de carga. Manter controle postural e Borg dentro da faixa-alvo.</td>
+            </tr>
+            <tr>
+              <td><strong>Consolidação do volume e estímulo de hipertrofia</strong><br>Semanas 5-6</td>
+              <td>F: 3x/sem<br>I: Borg 5-6<br>Sessão: ~35-40 min<br>Descanso: 60-90 s</td>
+              <td><strong>Aeróbico:</strong> cicloergômetro ou caminhada ritmada, 20 min contínuos.<br><strong>Resistido:</strong> agachamento livre até altura da cadeira 3x10; supino sentado com faixa ou halteres leves 3x10; panturrilha em pé sem apoio/progressão 3x15.<br><strong>Equilíbrio:</strong> caminhada em linha reta, padrão calcanhar-dedos, 2x10 passos.</td>
+              <td>Introduzir maior tensão mecânica sem exaustão. Reduzir se houver náusea, baixa ingestão ou sono ruim.</td>
+            </tr>
+            <tr>
+              <td><strong>Transição de volume e sobrecarga ativa</strong><br>Semanas 7-8</td>
+              <td>F: 3x/sem<br>I: Borg 5-6<br>Sessão: ~45 min<br>Descanso: 60-90 s</td>
+              <td><strong>Aeróbico:</strong> cicloergômetro ou caminhada contínua, 25 min.<br><strong>Resistido:</strong> agachamento livre com isometria de 2 s embaixo 3x10; remada com faixa forte 3x12; desenvolvimento de ombros sentado com halteres leves 3x10; panturrilha unilateral com apoio 3x10 por perna.<br><strong>Equilíbrio:</strong> alcance multidirecional em apoio unipodal 2x5 alcances por perna.</td>
+              <td>Usar isometria e tensão elástica com controle. Evitar instabilidade e dor articular persistente.</td>
+            </tr>
+            <tr>
+              <td><strong>Pico de volume e estímulo hipertrófico</strong><br>Semanas 9-10</td>
+              <td>F: 3x/sem<br>I: Borg 6<br>Sessão: ~50 min<br>Descanso: 60 s</td>
+              <td><strong>Aeróbico:</strong> caminhada ou cicloergômetro com variação de carga/ritmo, 30 min.<br><strong>Resistido:</strong> leg press horizontal ou agachamento com halter leve 3x12; supino sentado na máquina ou elástico forte 3x12; flexão de braço na parede 3x10; panturrilha em pé com excêntrica lenta de 3 s 3x15.<br><strong>Equilíbrio:</strong> marcha lateral com faixa elástica suave nos tornozelos 2x10 passos para cada lado.</td>
+              <td>Manter firme, mas sem exaustão. Controlar fadiga prolongada e sinais de baixa reserva energética.</td>
+            </tr>
+            <tr>
+              <td><strong>Consolidação, autonomia e alvo de tempo máximo</strong><br>Semanas 11-12</td>
+              <td>F: 3x/sem<br>I: Borg 6-7 sem exaustão<br>Sessão: ~55 min<br>Descanso: 60 s</td>
+              <td><strong>Aeróbico:</strong> cicloergômetro ou caminhada contínua em ritmo firme, 35 min.<br><strong>Resistido:</strong> agachamento livre com ênfase na velocidade de subida 3x12; remada aberta + extensão de tríceps com elástico 3x10 combinado; rosca bíceps com halteres 3x12; panturrilha em pé no degrau 3x15.<br><strong>Equilíbrio:</strong> caminhada sobre linha com desvios de obstáculos baixos 2x1 min.</td>
+              <td>Priorizar autonomia, marcha e segurança. Interromper se dor torácica, tontura, dispneia desproporcional ou dor óssea nova.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="figcaption"><strong>Leitura da tabela:</strong> a prescrição foi consolidada em uma tabela-mestre para evitar repetição estrutural. O conteúdo das fases foi preservado e reorganizado em parâmetros FITT-VP, prescrição integrada e critérios técnicos de decisão.</p>
+</div>
+<div class="card figure-card figure-compact full-span" style="margin-top:18px">
+<div class="section-head" style="margin-bottom:6px">
+<h2 style="font-size:30px">Gráfico 1. Progressão planejada em 12 semanas</h2>
+<span class="badge">apoio visual</span>
+<p>O gráfico resume a lógica de progressão gradual: primeiro consolidar tolerância e execução, depois ampliar volume e intensidade sem atingir exaustão.</p>
+</div>
+<svg aria-label="Gráfico de linhas mostrando progressão do treino" role="img" viewbox="0 0 620 320" width="100%">
+<rect fill="#fbfcff" height="240" rx="20" stroke="#e4ebf4" width="530" x="50" y="20"></rect>
+<line stroke="#b6c2d6" stroke-width="2" x1="90" x2="540" y1="230" y2="230"></line>
+<line stroke="#b6c2d6" stroke-width="2" x1="90" x2="90" y1="50" y2="230"></line>
+<polyline fill="none" points="120,200 240,160 360,136 480,95" stroke="#2c63ff" stroke-linecap="round" stroke-width="5"></polyline>
+<polyline fill="none" points="120,188 240,154 360,128 480,78" stroke="#f5b400" stroke-linecap="round" stroke-width="5"></polyline>
+<g fill="#2c63ff"><circle cx="120" cy="200" r="7"></circle><circle cx="240" cy="160" r="7"></circle><circle cx="360" cy="136" r="7"></circle><circle cx="480" cy="95" r="7"></circle></g>
+<g fill="#f5b400"><circle cx="120" cy="188" r="7"></circle><circle cx="240" cy="154" r="7"></circle><circle cx="360" cy="128" r="7"></circle><circle cx="480" cy="78" r="7"></circle></g>
+<g fill="#53627a" font-size="13" font-weight="700">
+<text text-anchor="middle" x="120" y="248">S1-2</text>
+<text text-anchor="middle" x="240" y="248">S3-4</text>
+<text text-anchor="middle" x="360" y="248">S5-8</text>
+<text text-anchor="middle" x="480" y="248">S9-12</text>
+<text fill="#2c63ff" x="196" y="34">Carga/intensidade</text>
+<text fill="#f5b400" x="364" y="34">Tempo aeróbico</text>
+</g>
+</svg>
+<p class="figcaption">A progressão não é agressiva: inicia com baixa dose, consolida tolerância e aumenta volume/intensidade apenas quando há janela adaptativa. <span class="source amber">Hurst et al., 2022</span> <span class="source">Tan et al., 2024</span></p>
+</div>
+</section>
+<section class="panel phase-matrix" id="matrizdecisao">
+<div class="section-head">
+<h2>Matriz translacional: fase de treino, decisão e mecanismo molecular</h2>
+<p>Esta matriz conecta cada fase da periodização à lógica bioquímica-oncológica do caso: câncer gástrico, perda ponderal acelerada, inflamação, provável resistência anabólica, fadiga e sarcopenia funcional.</p>
+</div>
+<div class="bio-note"><strong>Racional de alto nível:</strong> a prescrição não deve ser entendida como uma sequência fixa de exercícios, mas como uma intervenção modulada pelo estado metabólico da paciente. Quando há janela adaptativa - alimentação minimamente adequada, fadiga controlada, boa técnica e recuperação em 24 horas -, progride-se. Quando há piora sistêmica, reduz-se a dose para evitar ampliar o estresse catabólico.</div>
+<div class="phase-grid">
+<div class="phase-card">
+<span class="mini-label">Semanas 1-2</span>
+<h3>Adaptação neuromuscular</h3>
+<p><strong>Decisão:</strong> iniciar leve, Borg 3-4, com apoio, pausas de 120 s e foco em execução.</p>
+<p><strong>Mecanismo:</strong> reduz o desuso sem impor alto custo energético a um organismo provavelmente em balanço energético negativo.</p>
+<div class="mol-row"><span class="mol amber">antidesuso</span><span class="mol green">perfusão</span><span class="mol red">catabolismo ↓</span></div>
+</div>
+<div class="phase-card">
+<span class="mini-label">Semanas 3-4</span>
+<h3>Sobrecarga linear inicial</h3>
+<p><strong>Decisão:</strong> aumentar volume antes de carga: mais séries, repetições e tempo aeróbico.</p>
+<p><strong>Mecanismo:</strong> amplia mecanotransdução e sinalização pró-síntese, tentando contrariar resistência anabólica induzida por inflamação.</p>
+<div class="mol-row"><span class="mol green">mTORC1</span><span class="mol amber">fibras II</span><span class="mol red">miostatina ↓</span></div>
+</div>
+<div class="phase-card">
+<span class="mini-label">Semanas 5-6</span>
+<h3>Consolidação do volume</h3>
+<p><strong>Decisão:</strong> evoluir para agachamento, supino sentado, panturrilha em pé e caminhada calcanhar-dedos.</p>
+<p><strong>Mecanismo:</strong> aumenta tensão mecânica e tolerância ao volume, buscando estímulo hipertrófico sem exaustão sistêmica.</p>
+<div class="mol-row"><span class="mol green">síntese proteica</span><span class="mol amber">força ↑</span><span class="mol red">desuso ↓</span></div>
+</div>
+<div class="phase-card">
+<span class="mini-label">Semanas 7-8</span>
+<h3>Sobrecarga ativa</h3>
+<p><strong>Decisão:</strong> inserir isometria, maior tensão elástica, ombros e panturrilha unilateral com apoio.</p>
+<p><strong>Mecanismo:</strong> aumenta tempo sob tensão e recrutamento motor, preservando controle articular e segurança funcional.</p>
+<div class="mol-row"><span class="mol green">tempo sob tensão</span><span class="mol amber">unidades motoras</span><span class="mol green">controle</span></div>
+</div>
+<div class="phase-card">
+<span class="mini-label">Semanas 9-10</span>
+<h3>Pico de volume</h3>
+<p><strong>Decisão:</strong> consolidar 30 min aeróbicos e 3 séries de 12 repetições nos principais grupos musculares.</p>
+<p><strong>Mecanismo:</strong> amplia estímulo periférico e cardiorrespiratório, favorecendo capacidade oxidativa e função muscular.</p>
+<div class="mol-row"><span class="mol green">AMPK</span><span class="mol green">PGC-1α</span><span class="mol amber">marcha ↑</span></div>
+</div>
+<div class="phase-card">
+<span class="mini-label">Semanas 11-12</span>
+<h3>Autonomia e alvo máximo</h3>
+<p><strong>Decisão:</strong> atingir 55 min, Borg 6-7 sem exaustão, com exercícios combinados e obstáculos baixos.</p>
+<p><strong>Mecanismo:</strong> transfere força para autonomia, coordenação e reserva funcional, mantendo margem de segurança clínica.</p>
+<div class="mol-row"><span class="mol green">autonomia</span><span class="mol amber">coordenação</span><span class="mol red">exaustão evitada</span></div>
+</div>
+</div>
+<div class="grid-2">
+<div class="card">
+<h3>Lactato: por que controlar intensidade?</h3>
+<p>No exercício moderado, o lactato é transitório e pode participar de sinalização adaptativa. No câncer, porém, o lactato tumoral cronicamente elevado pode funcionar como mediador metabólico da caquexia. Por isso, nesta paciente, a progressão deve evitar esforço extenuante e grande carga glicolítica nas fases iniciais.</p>
+<p>Essa distinção impede uma leitura simplista: o lactato do exercício não tem o mesmo significado biológico do lactato sustentado por metabolismo tumoral glicolítico.</p>
+<span class="source">Liu et al., 2024</span>
+</div>
+<div class="card">
+<h3>Exercício como antídoto parcial ao ciclo caquético</h3>
+<p>O treino resistido fornece tensão mecânica para preservar proteínas contráteis; o aeróbico leve/moderado estimula eficiência oxidativa; e o treino funcional reduz o ciclo fadiga-inatividade. O objetivo é interromper a sequência: tumor - inflamação - proteólise - disfunção mitocondrial - fadiga - imobilidade - mais sarcopenia.</p>
+<span class="source amber">Anjanappa et al., 2020</span> <span class="source green">Ligibel et al., 2022</span>
+</div>
+</div>
+<div class="card" style="margin-top:18px">
+<h3>Tabela translacional: tomada de decisão baseada em sinais clínicos e mecanismos</h3>
+<table class="exercise-table">
+<thead><tr><th>Situação observada</th><th>Decisão prática</th><th>Justificativa bioquímica-oncológica</th></tr></thead>
+<tbody>
+<tr><td>Boa técnica, Borg controlado e recuperação em até 24 h</td><td>Progredir volume ou carga em pequeno passo</td><td>Indica janela adaptativa favorável, com capacidade de converter estímulo mecânico em adaptação funcional.</td></tr>
+<tr><td>Fadiga moderada por mais de 24 h</td><td>Reduzir volume em 20-30% ou repetir fase anterior</td><td>Pode sugerir baixa reserva mitocondrial, inflamação elevada ou recuperação insuficiente frente ao estresse imposto.</td></tr>
+<tr><td>Perda de peso continua acelerada</td><td>Não progredir carga; integrar nutrição e revisar ingestão</td><td>Sem substrato energético e aminoácidos, mTORC1 e síntese proteica respondem mal ao treino, mantendo resistência anabólica.</td></tr>
+<tr><td>Náusea, anorexia ou baixa ingestão no dia</td><td>Fazer sessão curta, mobilidade ou caminhada leve</td><td>Baixa disponibilidade energética aumenta risco de intolerância, hipoglicemia relativa e piora da fadiga.</td></tr>
+<tr><td>Dor óssea nova, tontura, dispneia desproporcional ou dor torácica</td><td>Interromper e comunicar equipe clínica</td><td>Pode indicar instabilidade cardiovascular, anemia relevante, metástase/fragilidade óssea ou descompensação sistêmica.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="decision-strip">
+<div class="decision-card"><h4>Resistido</h4><p>Alvo molecular: tensão mecânica, mecanotransdução, mTORC1 e preservação de proteínas contráteis. Prioridade para membros inferiores pela marcha de 0,7 m/s.</p></div>
+<div class="decision-card"><h4>Aeróbico leve/moderado</h4><p>Alvo molecular: AMPK-PGC-1α, eficiência oxidativa e modulação de fadiga, evitando excesso de estresse glicolítico.</p></div>
+<div class="decision-card"><h4>Funcional/equilíbrio</h4><p>Alvo funcional: coordenação neuromuscular, marcha, levantar da cadeira e prevenção de quedas, com baixo custo metabólico adicional.</p></div>
+<div class="decision-card"><h4>Nutrição integrada</h4><p>Alvo sistêmico: disponibilidade de aminoácidos e energia para transformar estímulo mecânico em síntese e recuperação muscular.</p></div>
+</div>
+</section>
+<section class="grid-2">
+<div class="card">
+<h3>Progressão: quando aumentar a dose?</h3>
+<p>A progressão deve acontecer apenas se a paciente apresentar <strong>boa técnica</strong>, <strong>PSE controlada</strong>, <strong>ausência de piora importante da fadiga em 24 horas</strong> e <strong>boa tolerância clínica geral</strong>. Em termos práticos, é melhor evoluir um pouco mais devagar do que avançar rápido demais e perder adesão.</p>
+<p>Uma regra útil é aumentar primeiro o <strong>volume</strong> (por exemplo, passar de 1 para 2 séries ou de 20 para 25 minutos) e depois, com estabilidade, aumentar a <strong>intensidade</strong> em pequenos passos.</p>
+<span class="source">Hurst et al., 2022</span> <span class="source amber">Jang et al., 2025</span>
+</div>
+<div class="card">
+<h3>Integração com nutrição e equipe clínica</h3>
+<p>Neste caso, o exercício não pode ser visto isoladamente. A paciente perdeu mais de 10 kg em 60 dias, então o treino só alcançará seu potencial máximo se vier acompanhado de <strong>suporte nutricional</strong> e reavaliação clínica contínua. Em paciente sarcopênica, força e massa muscular dependem de estímulo mecânico, mas também de disponibilidade energética e proteica.</p>
+<p>Isso reforça o caráter multiprofissional do caso: nutrição, fisioterapia, educação física e oncologia precisam trabalhar em sinergia.</p>
+<span class="source green">Storck et al., 2023</span> <span class="source">Ligibel et al., 2022</span>
+</div>
+</section>
+<section>
+<div class="section-head">
+<h2>Segurança clínica</h2>
+<p>Em pacientes com câncer, a pergunta não é apenas “o que fazer”, mas também “quando progredir, quando reduzir e quando parar”. A decisão deve considerar fadiga, ingestão, recuperação, dor e sinais indiretos de inflamação, anemia ou baixa reserva energética.</p>
+</div>
+<div class="rules">
+<div class="rule"><h3>Progredir se</h3><ul><li>Boa técnica e boa tolerância ao esforço.</li><li>PSE dentro do alvo.</li><li>Sem piora relevante da fadiga nas 24h seguintes.</li><li>Sem dor persistente ou queda de desempenho.</li></ul></div>
+<div class="rule"><h3>Reduzir se</h3><ul><li>Fadiga moderada ou sono ruim.</li><li>Náusea, inapetência ou maior indisposição.</li><li>Oscilação clínica no dia do treino.</li><li>Sessão anterior gerou recuperação lenta demais.</li></ul></div>
+<div class="rule"><h3>Interromper se</h3><ul><li>Dor torácica ou dispneia desproporcional.</li><li>Tontura, febre ou mal-estar importante.</li><li>Dor óssea nova ou suspeita de complicação.</li><li>Fadiga incapacitante.</li></ul></div>
+</div>
+<div class="bio-note"><strong>Regra de inteligência clínica:</strong> se a sessão aumenta fadiga por mais de 24 horas, a dose provavelmente ultrapassou a capacidade metabólica de recuperação. Se a paciente recupera bem, mantém ingestão e executa com técnica, existe janela para progressão. Essa lógica sintoma-guiada é mais segura do que aumentar carga automaticamente.</div>
+</section>
+<section class="panel" id="equipe" style="padding:26px">
+<div class="section-head">
+<h2>Equipe e atribuições</h2>
+<p>Composição sugerida para o material didático, alinhando a expertise de cada profissional ao raciocínio clínico e à prescrição do exercício.</p>
+</div>
+<div class="team">
+<div class="person"><div class="avatar">SN</div><h3>Sophia Nery Marini</h3><div class="role">Fisioterapia • mobilidade e segurança funcional</div><p>Fisioterapeuta pós-graduada em Fisioterapia Esportiva – CETE. Contribuição sugerida: avaliação funcional, marcha, equilíbrio, adaptação motora e condutas de segurança.</p><a href="http://lattes.cnpq.br/0119036840283140">Lattes</a></div>
+<div class="person"><div class="avatar">CP</div><h3>Cristiano de Almeida Porfírio</h3><div class="role">Educação Física • progressão e grupos especiais</div><p>Profissional de Educação Física, com especialização em Grupos Especiais / Prevenção e Recuperação de Lesões. Contribuição sugerida: estruturação do treino aeróbico e progressão da carga.</p><a href="http://lattes.cnpq.br/0281481105402181">Lattes</a></div>
+<div class="person"><div class="avatar">LV</div><h3>Luís Eduardo Valente</h3><div class="role">Educação Física • treinamento resistido e adesão</div><p>Profissional de Educação Física, pós-graduado em Treinamento Desportivo e Reabilitação e Exercício em Lesões Músculo Esqueléticas; mestre em Psicologia da Saúde. Contribuição sugerida: prescrição full body e estratégias de adesão.</p><a href="http://lattes.cnpq.br/9830752856530793">Lattes</a></div>
+<div class="person"><div class="avatar">VB</div><h3>Vanessa Bertolucci</h3><div class="role">Integração translacional • supervisão metodológica</div><p>Biomédica e doutoranda em pesquisa translacional, com expertise em metabolômica, osteoimunologia e bioquímica aplicada à clínica; membro ativo da Cochrane 2026–2029. Contribuição sugerida: revisão crítica da evidência, integração translacional e supervisão metodológica do dashboard.</p><a href="https://lattes.cnpq.br/5975245193659707">Lattes</a> · <a href="https://orcid.org/0009-0009-5096-5189">ORCID</a></div>
+</div>
+</section>
+<section class="panel" id="referencias" style="padding:26px">
+<div class="section-head">
+<h2>Referências bibliográficas</h2>
+<p>Seleção de referências citadas ao longo do material, em formato autor-ano, priorizando diretrizes de exercício, consenso oncológico, sarcopenia e documentos complementares de prescrição baseada em evidências.</p>
+</div>
+<div class="refs">
+<p><strong>American College of Sports Medicine. (2021).</strong> <em>ACSM's Guidelines for Exercise Testing and Prescription</em>. 11th ed. Philadelphia: Wolters Kluwer.</p>
+<p><strong>Ozemek C, Brawner CA, Berry RB, Paluch AE, editors. (2025).</strong> <em>ACSM's Guidelines for Exercise Testing and Prescription</em>. 12th ed. Philadelphia: Wolters Kluwer.</p>
+<p><strong>Campbell KL, Winters-Stone KM, Wiskemann J, et al. (2019).</strong> Exercise guidelines for cancer survivors: consensus statement from international multidisciplinary roundtable. <em>Medicine &amp; Science in Sports &amp; Exercise</em>, 51(11), 2375–2390.</p>
+<p><strong>Argilés JM, Busquets S, Stemmler B, López-Soriano FJ. (2014).</strong> Cancer cachexia: understanding the molecular basis. <em>Nature Reviews Cancer</em>, 14, 754–762.</p>
+<p><strong>Fearon K, Strasser F, Anker SD, et al. (2011).</strong> Definition and classification of cancer cachexia: an international consensus. <em>The Lancet Oncology</em>, 12(5), 489–495.</p>
+<p><strong>Liu X, Li S, Cui Q, et al. (2024).</strong> Activation of GPR81 by lactate drives tumour-induced cachexia. <em>Nature Metabolism</em>, 6, 708–723.</p>
+<p><strong>Adams S, Segal R, McKenzie D, et al. (2016).</strong> Impact of resistance and aerobic exercise on sarcopenia and dynapenia in breast cancer patients receiving adjuvant chemotherapy. <em>Breast Cancer Research and Treatment</em>, 158, 497–507.</p>
+<p><strong>Anjanappa M, Corden M, Green A, et al. (2020).</strong> Sarcopenia in cancer: Risking more than muscle loss. <em>Technical Innovations &amp; Patient Support in Radiation Oncology</em>, 16, 50–57.</p>
+<p><strong>Avancini A, Borsati A, Toniolo L, et al. (2025).</strong> Physical activity guidelines in oncology: a systematic review of the current recommendations. <em>Critical Reviews in Oncology/Hematology</em>.</p>
+<p><strong>Burke D, Brown M, O’Neill C, et al. (2024).</strong> The effect of lifestyle interventions on sarcopenia in advanced colorectal cancer: a systematic review. <em>Journal of Geriatric Oncology</em>.</p>
+<p><strong>Chen N, He X, Feng Y, et al. (2021).</strong> Effects of resistance training in healthy older people with sarcopenia: a systematic review and meta-analysis of randomized controlled trials. <em>European Review of Aging and Physical Activity</em>, 18.</p>
+<p><strong>Cruz-Jentoft AJ, Bahat G, Bauer J, et al. (2019).</strong> Sarcopenia: revised European consensus on definition and diagnosis. <em>Age and Ageing</em>, 48(1), 16–31.</p>
+<p><strong>D'silva C, Shetty V, Fernandes D, et al. (2025).</strong> Effect of structured exercise-based rehabilitation on sarcopenia and quality of life among head and neck cancer patients undergoing chemoradiotherapy. <em>Asian Pacific Journal of Cancer Prevention</em>, 26, 1653–1660.</p>
+<p><strong>Hurst C, Robinson S, Witham M, et al. (2022).</strong> Resistance exercise as a treatment for sarcopenia: prescription and delivery. <em>Age and Ageing</em>, 51.</p>
+<p><strong>Jang M, Park C, Tussing-Humphreys L, et al. (2021).</strong> The effectiveness of sarcopenia interventions for cancer patients receiving chemotherapy. <em>Cancer Nursing</em>, 46, E81–E90.</p>
+<p><strong>Jang M, Park S, Jeon J, et al. (2025).</strong> Evaluating the effects of a resistance exercise intervention for sarcopenia in patients receiving neoadjuvant chemotherapy for breast cancer. <em>BMC Cancer</em>, 25.</p>
+<p><strong>Ligibel J, Bohlke K, May A, et al. (2022).</strong> Exercise, diet, and weight management during cancer treatment: ASCO guideline. <em>Journal of Clinical Oncology</em>, 40, 2491–2507.</p>
+<p><strong>Liu R, Gao X, Wang L. (2024).</strong> Network meta-analysis of the intervention effects of different exercise measures on sarcopenia in cancer patients. <em>BMC Public Health</em>, 24.</p>
+<p><strong>Papadopetraki A, Giannopoulos A, Maridaki M, et al. (2023).</strong> The role of exercise in cancer-related sarcopenia and sarcopenic obesity. <em>Cancers</em>, 15.</p>
+<p><strong>Shen Y, Shi Q, Nong K, et al. (2023).</strong> Exercise for sarcopenia in older people: a systematic review and network meta-analysis. <em>Journal of Cachexia, Sarcopenia and Muscle</em>, 14, 1199–1211.</p>
+<p><strong>Storck L, Uster A, Gafner L, et al. (2023).</strong> Effect of combined therapies including nutrition and physical exercise in advanced cancer patients: a pooled analysis. <em>Frontiers in Nutrition</em>, 10.</p>
+<p><strong>Studenski S, Perera S, Patel K, et al. (2011).</strong> Gait speed and survival in older adults. <em>JAMA</em>, 305(1), 50–58.</p>
+<p><strong>Tan T, Tan H, Chung Y. (2024).</strong> Effectiveness of resistance training in preventing sarcopenia among breast cancer patients undergoing chemotherapy: a systematic review and meta-analysis. <em>Worldviews on Evidence-Based Nursing</em>.</p>
+<p><strong>Yan R, Chen Y, Zhang R, et al. (2025).</strong> Optimal resistance training prescriptions to improve muscle strength, physical function, and muscle mass in older adults diagnosed with sarcopenia. <em>Aging Clinical and Experimental Research</em>, 37.</p>
+</div>
+<div class="footer-note">Base científica principal: documento complementar <em>Exercise Prescription for a Cancer Patient With Sarcopenia: Evidence-Based Details</em> e literatura científica citada em formato autor-ano. Os textos interpretativos deste dashboard foram elaborados para fins didáticos e de discussão acadêmica.</div>
+</section>
+</main>
+<script>
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
