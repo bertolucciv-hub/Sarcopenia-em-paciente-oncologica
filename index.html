@@ -206,8 +206,24 @@
     .lab-card{border:1px solid var(--line);background:#fff;border-radius:18px;padding:14px;min-height:130px}
     .lab-card strong{display:block;color:var(--navy);font-size:15px;margin-bottom:6px}.lab-card span{display:block;color:#5b687d;font-size:13px}
 
-    @media(max-width:1024px){.hero,.grid-2,.qa-body{grid-template-columns:1fr}.question-index,.flow,.week,.rules,.team,.grid-3,.dose-grid,.bio-grid,.mechanism-strip,.menu-grid,.phase-grid,.decision-strip,.lab-grid{grid-template-columns:1fr 1fr}.refs{columns:1}}
-    @media(max-width:720px){.nav-links{display:none}.hero-main{padding:24px}.question-index,.week,.rules,.team,.grid-3,.dose-grid,.mini-grid,.bio-grid,.mechanism-strip,.menu-grid,.phase-grid,.decision-strip,.lab-grid{grid-template-columns:1fr}.qa-top,.qa-body{grid-template-columns:1fr}.qa-num{width:56px;height:56px}.kpis{grid-template-columns:1fr}.flow{grid-template-columns:1fr}.print-btn{display:none}}
+
+    .borg-guide{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+    .borg-item{padding:14px;border-radius:18px;border:1px solid var(--line);background:#fff;box-shadow:0 8px 20px rgba(16,32,59,.04)}
+    .borg-item strong{display:block;color:var(--navy);margin-bottom:4px}
+    .dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:middle}
+    .dot.green{background:#1f9d6b}.dot.yellow{background:#f5b400}.dot.orange{background:#f08a24}.dot.red{background:#eb5a68}
+    .period-detail{margin-top:18px}
+    .period-detail h3{font-size:24px;margin-bottom:8px}
+    .period-meta{margin:8px 0 14px;padding:14px;border-radius:18px;background:#f8fbff;border:1px solid var(--line);color:#53627a}
+    .period-meta p{margin:0 0 5px}.period-meta p:last-child{margin-bottom:0}
+    .period-table-v2 th:nth-child(1), .period-table-v2 td:nth-child(1){width:13%}
+    .period-table-v2 th:nth-child(2), .period-table-v2 td:nth-child(2){width:32%}
+    .period-table-v2 th:nth-child(3), .period-table-v2 td:nth-child(3){width:28%}
+    .period-table-v2 th:nth-child(4), .period-table-v2 td:nth-child(4){width:27%}
+    .period-table-v2 td{line-height:1.45}
+
+    @media(max-width:1024px){.hero,.grid-2,.qa-body{grid-template-columns:1fr}.question-index,.flow,.week,.rules,.team,.grid-3,.dose-grid,.bio-grid,.mechanism-strip,.menu-grid,.phase-grid,.decision-strip,.lab-grid,.borg-guide{grid-template-columns:1fr 1fr}.refs{columns:1}}
+    @media(max-width:720px){.nav-links{display:none}.hero-main{padding:24px}.question-index,.week,.rules,.team,.grid-3,.dose-grid,.mini-grid,.bio-grid,.mechanism-strip,.menu-grid,.phase-grid,.decision-strip,.lab-grid,.borg-guide{grid-template-columns:1fr}.qa-top,.qa-body{grid-template-columns:1fr}.qa-num{width:56px;height:56px}.kpis{grid-template-columns:1fr}.flow{grid-template-columns:1fr}.print-btn{display:none}}
     @media print{
       .nav,.print-btn{display:none!important}
       body{background:#fff}
@@ -386,18 +402,13 @@
 </div>
 </div>
 <div class="qa-body">
-<div class="answer-box">
-<div class="answer-pill">Resposta direta</div>
-<h4>Prescrição do treinamento físico clínico: período de 12 semanas</h4>
-<p>A prescrição adota o modelo de <strong>Treinamento Físico Combinado/Multicomponente</strong> preconizado pelas diretrizes internacionais do American College of Sports Medicine (Campbell et al., 2019; Ozemek et al., 2025). O programa é periodizado de forma linear progressiva, respeitando a fragilidade inicial da paciente, com força de <strong>15 kgf</strong> e velocidade de marcha de <strong>0,7 m/s</strong>.</p>
-<p>A estruturação do treinamento físico baseia-se no protocolo <strong>FITT-VP</strong> do Consenso de Oncologia do ACSM, cruzando as diretrizes internacionais com as necessidades clínicas da paciente. As sessões integradas ocorrerão <strong>3 vezes por semana</strong>, em segundas, quartas e sextas, evoluindo de <strong>25 para 55 minutos</strong>, com intensidade controlada de nível leve a moderado pela <strong>Escala de Borg CR-10</strong>.</p>
-<p>Os focos centrais são atenuar o catabolismo tumoral, recuperar a massa muscular periférica, considerando panturrilha &lt;31 cm, e mitigar a fadiga oncológica crônica.</p>
-<div class="mini-grid">
+<div class="answer-box"><div class="answer-pill">Resposta direta</div>
+<h4>Prescrição do Treinamento Físico Clínico (Período: 12 Semanas)</h4>
+<p>No âmbito do Treinamento Físico Clínico para populações oncológicas, a monitorização e o controle preciso da variável Intensidade (I) dentro do protocolo FITT-VP são fundamentais para garantir a eficácia terapêutica e a segurança do paciente. Em cenários de fragilidade neuromuscular ou quando marcadores fisiológicos tradicionais (como a Frequência Cardíaca) sofrem interferência de agentes quimioterápicos ou medicações adjuvantes, as diretrizes do American College of Sports Medicine (ACSM, 2025) preconizam o uso de escalas de Percepção Subjetiva de Esforço (PSE).</p><p>Para otimizar o monitoramento técnico pela equipe multiprofissional e, simultaneamente, facilitar a compreensão tátil por parte do paciente leigo, as cargas de treinamento deste programa serão expressas e controladas pela Escala de Borg (CR-10) (Borg, 1998), um instrumento clássico que quantifica as respostas psicofísicas de esforço periférico, dor e desconforto respiratório. Sua progressão de 0 a 10 possui alta correlação com marcadores lineares de estresse metabólico, sendo amplamente adotada na rotina clínica esportiva.</p><p>A prescrição adota o modelo de Treinamento Físico Combinado/Multicomponente preconizado pelas diretrizes internacionais do American College of Sports Medicine (Campbell et al., 2019; Ozemek et al., 2025). O programa é estruturado por meio de uma periodização linear progressiva baseada no protocolo FITT-VP (Frequência, Intensidade, Tempo, Tipo, Volume e Progressão) (ACSM, 2025), sendo meticulosamente adaptado à fragilidade neuromuscular inicial da paciente (força de 15 kgf e velocidade de marcha de 0,7 m/s). As sessões integradas ocorrerão com uma frequência de 3 vezes por semana (segundas, quartas e sextas), com o tempo total evoluindo progressivamente de 25 a 35 minutos iniciais para até 55 minutos nas semanas finais. A intensidade do treinamento será controlada de nível leve a moderado por meio da Escala de Borg (CR-10) (Borg, 1998), visando cruzar as recomendações do Consenso de Oncologia do ACSM (Ozemek et al., 2025) com as necessidades clínicas individuais da paciente. Os focos centrais desta intervenção são atenuar o catabolismo tumoral, recuperar a massa muscular (panturrilha &lt; 31 cm) e mitigar a fadiga oncológica crônica.</p><div class="mini-grid">
 <div class="mini"><strong>Frequência</strong> 3 sessões integradas/semana: segundas, quartas e sextas.</div>
-<div class="mini"><strong>Intensidade</strong> Borg CR-10: 3–4 → 4–5 → 5–6 → 6–7 sem exaustão.</div>
+<div class="mini"><strong>Intensidade</strong> Escala de Borg CR-10: 3-4 → 4-5 → 5-6 → 6-7 sem exaustão.</div>
 <div class="mini"><strong>Progressão</strong> linear, gradual, supervisionada e sintoma-guiada por 12 semanas.</div>
-</div>
-</div>
+</div></div>
 <div class="evidence-box">
 <h4>Justificativa clínica e fontes</h4>
 <ul>
@@ -451,15 +462,12 @@
 </figure>
 <p class="figcaption"><span class="source">Campbell et al., 2019</span> <span class="source amber">Ozemek et al., 2025</span></p>
 </div>
-
-
 </section>
 <section class="panel bio-dashboard" id="biojustificativas">
 <div class="section-head">
 <h2>Justificativas bioquímicas e oncológicas</h2>
 <p>Esta seção aprofunda o “porquê” biológico do caso. A sarcopenia relacionada ao câncer não resulta apenas de menor alimentação; ela emerge da convergência entre inflamação, metabolismo tumoral, balanço energético negativo, proteólise muscular, disfunção mitocondrial, fadiga e inatividade.</p>
 </div>
-
 <div class="bio-grid">
 <div class="bio-box"><h3>1. Balanço energético negativo</h3><p>Anorexia, náusea, saciedade precoce e menor ingestão reduzem energia e aminoácidos disponíveis. Sem substrato suficiente, o músculo perde capacidade de manter síntese proteica e reparo tecidual.</p><span class="source">Fearon et al., 2011</span><div class="mol-row"><span class="mol amber">proteína ↓</span><span class="mol amber">energia ↓</span><span class="mol red">peso ↓</span></div></div>
 <div class="bio-box"><h3>2. Inflamação sistêmica</h3><p>Citocinas como IL-6, TNF-α e IL-1β ativam vias pró-catabólicas. STAT3 e NF-κB funcionam como interruptores moleculares que favorecem proteólise, estresse oxidativo e fadiga.</p><span class="source red">Anjanappa et al., 2020</span><div class="mol-row"><span class="mol red">IL-6</span><span class="mol red">TNF-α</span><span class="mol red">NF-κB</span><span class="mol red">STAT3</span></div></div>
@@ -475,96 +483,36 @@
 <div class="mech-card"><h4>Por que nutrição?</h4><p>Sem energia e proteína suficientes, o músculo tem menor capacidade de responder ao treino e regenerar tecido.</p><span class="source">Storck et al., 2023</span></div>
 </div>
 </section>
-
 <section class="panel" id="periodizacao" style="padding:26px">
 <div class="section-head">
-<h2>Tabela-mestre de periodização semanal: semanas 1 a 12</h2>
+<h2>Tabelas de Periodização Semanal (Semanas 1 a 12)</h2>
 <p>Prescrição clínica em modelo combinado/multicomponente, organizada por blocos progressivos. Cada sessão integra componente aeróbico, resistido e equilíbrio/funcionalidade, com controle pela Escala de Borg CR-10 e ajuste conforme fadiga, sintomas e tolerância clínica.</p>
 </div>
 <div class="card">
 <span class="mini-label">Atividade colaborativa • Questão 4</span>
-<h3>Prescrição do treinamento físico clínico: período de 12 semanas</h3>
-<p>A prescrição adota o modelo de <strong>Treinamento Físico Combinado/Multicomponente</strong> preconizado pelas diretrizes internacionais do American College of Sports Medicine (Campbell et al., 2019; Ozemek et al., 2025). O programa é periodizado de forma linear progressiva, respeitando a fragilidade inicial da paciente, com força de 15 kgf e velocidade de marcha de 0,7 m/s. A estruturação do treinamento físico baseia-se no protocolo <strong>FITT-VP</strong> do Consenso de Oncologia do ACSM, cruzando as diretrizes internacionais com as necessidades clínicas da paciente.</p>
-<p>As sessões integradas ocorrerão <strong>3 vezes por semana</strong>, em segundas, quartas e sextas, evoluindo de <strong>25 para 55 minutos</strong>, com intensidade controlada de nível leve a moderado pela <strong>Escala de Borg CR-10</strong>. Os focos centrais são atenuar o catabolismo tumoral, recuperar a massa muscular periférica, considerando panturrilha &lt;31 cm, e mitigar a fadiga oncológica crônica.</p>
-<p><strong>Suporte nutricional integrado:</strong> recomenda-se ingestão proteica de 1,2-1,5 g/kg/dia e aporte energético de 30-35 kcal/kg/dia, sincronizados com as sessões de treino para otimizar síntese proteica, recuperação e preservação de massa magra (Hurst et al., 2022; Storck et al., 2023).</p>
+<h3>Prescrição do Treinamento Físico Clínico (Período: 12 Semanas)</h3>
+<p>No âmbito do Treinamento Físico Clínico para populações oncológicas, a monitorização e o controle preciso da variável Intensidade (I) dentro do protocolo FITT-VP são fundamentais para garantir a eficácia terapêutica e a segurança do paciente. Em cenários de fragilidade neuromuscular ou quando marcadores fisiológicos tradicionais (como a Frequência Cardíaca) sofrem interferência de agentes quimioterápicos ou medicações adjuvantes, as diretrizes do American College of Sports Medicine (ACSM, 2025) preconizam o uso de escalas de Percepção Subjetiva de Esforço (PSE).</p>
+<p>Para otimizar o monitoramento técnico pela equipe multiprofissional e, simultaneamente, facilitar a compreensão tátil por parte do paciente leigo, as cargas de treinamento deste programa serão expressas e controladas pela Escala de Borg (CR-10) (Borg, 1998), um instrumento clássico que quantifica as respostas psicofísicas de esforço periférico, dor e desconforto respiratório. Sua progressão de 0 a 10 possui alta correlação com marcadores lineares de estresse metabólico, sendo amplamente adotada na rotina clínica esportiva.</p>
+<p>A prescrição adota o modelo de Treinamento Físico Combinado/Multicomponente preconizado pelas diretrizes internacionais do American College of Sports Medicine (Campbell et al., 2019; Ozemek et al., 2025). O programa é estruturado por meio de uma periodização linear progressiva baseada no protocolo FITT-VP (Frequência, Intensidade, Tempo, Tipo, Volume e Progressão) (ACSM, 2025), sendo meticulosamente adaptado à fragilidade neuromuscular inicial da paciente (força de 15 kgf e velocidade de marcha de 0,7 m/s). As sessões integradas ocorrerão com uma frequência de 3 vezes por semana (segundas, quartas e sextas), com o tempo total evoluindo progressivamente de 25 a 35 minutos iniciais para até 55 minutos nas semanas finais. A intensidade do treinamento será controlada de nível leve a moderado por meio da Escala de Borg (CR-10) (Borg, 1998), visando cruzar as recomendações do Consenso de Oncologia do ACSM (Ozemek et al., 2025) com as necessidades clínicas individuais da paciente. Os focos centrais desta intervenção são atenuar o catabolismo tumoral, recuperar a massa muscular (panturrilha &lt; 31 cm) e mitigar a fadiga oncológica crônica.</p>
 </div>
 <div class="card" style="margin-top:18px">
-<h3>Tabela-mestre consolidada da periodização de 12 semanas</h3>
-<table class="exercise-table period-table master-table">
-          <thead>
-            <tr>
-              <th>Fase / semanas</th>
-              <th>Parâmetros FITT-VP</th>
-              <th>Prescrição integrada</th>
-              <th>Critério técnico / decisão</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Adaptação neuromuscular e tolerância ao esforço</strong><br>Semanas 1-2</td>
-              <td>F: 3x/sem<br>I: Borg 3-4<br>Sessão: ~25 min<br>Descanso: 120 s</td>
-              <td><strong>Aeróbico:</strong> cicloergômetro ou caminhada em plano horizontal, 5-10 min contínuos.<br><strong>Resistido:</strong> sentar e levantar com apoio das mãos 2x8; remada sentada com faixa elástica leve 2x10; elevação de panturrilha sentada 2x12.<br><strong>Equilíbrio:</strong> apoio unipodal com suporte das mãos 2x20 s por perna.</td>
-              <td>Iniciar leve, com apoio e pausas longas. Progredir apenas se não houver piora da fadiga nas 24 h seguintes.</td>
-            </tr>
-            <tr>
-              <td><strong>Sobrecarga linear progressiva inicial</strong><br>Semanas 3-4</td>
-              <td>F: 3x/sem<br>I: Borg 4-5<br>Sessão: ~30 min<br>Descanso: 90 s</td>
-              <td><strong>Aeróbico:</strong> cicloergômetro ou caminhada com variação leve de inclinação, 15 min contínuos.<br><strong>Resistido:</strong> sentar e levantar sem apoio das mãos 3x8; remada com faixa de maior tensão 3x10; panturrilha em pé com apoio das mãos 3x12.<br><strong>Equilíbrio:</strong> marcha estacionária elevando joelhos 2x30 s.</td>
-              <td>Aumentar volume antes de carga. Manter controle postural e Borg dentro da faixa-alvo.</td>
-            </tr>
-            <tr>
-              <td><strong>Consolidação do volume e estímulo de hipertrofia</strong><br>Semanas 5-6</td>
-              <td>F: 3x/sem<br>I: Borg 5-6<br>Sessão: ~35-40 min<br>Descanso: 60-90 s</td>
-              <td><strong>Aeróbico:</strong> cicloergômetro ou caminhada ritmada, 20 min contínuos.<br><strong>Resistido:</strong> agachamento livre até altura da cadeira 3x10; supino sentado com faixa ou halteres leves 3x10; panturrilha em pé sem apoio/progressão 3x15.<br><strong>Equilíbrio:</strong> caminhada em linha reta, padrão calcanhar-dedos, 2x10 passos.</td>
-              <td>Introduzir maior tensão mecânica sem exaustão. Reduzir se houver náusea, baixa ingestão ou sono ruim.</td>
-            </tr>
-            <tr>
-              <td><strong>Transição de volume e sobrecarga ativa</strong><br>Semanas 7-8</td>
-              <td>F: 3x/sem<br>I: Borg 5-6<br>Sessão: ~45 min<br>Descanso: 60-90 s</td>
-              <td><strong>Aeróbico:</strong> cicloergômetro ou caminhada contínua, 25 min.<br><strong>Resistido:</strong> agachamento livre com isometria de 2 s embaixo 3x10; remada com faixa forte 3x12; desenvolvimento de ombros sentado com halteres leves 3x10; panturrilha unilateral com apoio 3x10 por perna.<br><strong>Equilíbrio:</strong> alcance multidirecional em apoio unipodal 2x5 alcances por perna.</td>
-              <td>Usar isometria e tensão elástica com controle. Evitar instabilidade e dor articular persistente.</td>
-            </tr>
-            <tr>
-              <td><strong>Pico de volume e estímulo hipertrófico</strong><br>Semanas 9-10</td>
-              <td>F: 3x/sem<br>I: Borg 6<br>Sessão: ~50 min<br>Descanso: 60 s</td>
-              <td><strong>Aeróbico:</strong> caminhada ou cicloergômetro com variação de carga/ritmo, 30 min.<br><strong>Resistido:</strong> leg press horizontal ou agachamento com halter leve 3x12; supino sentado na máquina ou elástico forte 3x12; flexão de braço na parede 3x10; panturrilha em pé com excêntrica lenta de 3 s 3x15.<br><strong>Equilíbrio:</strong> marcha lateral com faixa elástica suave nos tornozelos 2x10 passos para cada lado.</td>
-              <td>Manter firme, mas sem exaustão. Controlar fadiga prolongada e sinais de baixa reserva energética.</td>
-            </tr>
-            <tr>
-              <td><strong>Consolidação, autonomia e alvo de tempo máximo</strong><br>Semanas 11-12</td>
-              <td>F: 3x/sem<br>I: Borg 6-7 sem exaustão<br>Sessão: ~55 min<br>Descanso: 60 s</td>
-              <td><strong>Aeróbico:</strong> cicloergômetro ou caminhada contínua em ritmo firme, 35 min.<br><strong>Resistido:</strong> agachamento livre com ênfase na velocidade de subida 3x12; remada aberta + extensão de tríceps com elástico 3x10 combinado; rosca bíceps com halteres 3x12; panturrilha em pé no degrau 3x15.<br><strong>Equilíbrio:</strong> caminhada sobre linha com desvios de obstáculos baixos 2x1 min.</td>
-              <td>Priorizar autonomia, marcha e segurança. Interromper se dor torácica, tontura, dispneia desproporcional ou dor óssea nova.</td>
-            </tr>
-          </tbody>
-        </table>
-        <p class="figcaption"><strong>Leitura da tabela:</strong> a prescrição foi consolidada em uma tabela-mestre para evitar repetição estrutural. O conteúdo das fases foi preservado e reorganizado em parâmetros FITT-VP, prescrição integrada e critérios técnicos de decisão.</p>
+<h3>Guia Rápido de Intensidade (Escala de Borg CR-10)</h3>
+<p>Para garantir a eficácia clínica e a segurança no manejo da fadiga oncológica (ACSM, 2025), a intensidade do treinamento será controlada pela sensação de esforço através da Escala de Borg (CR-10) (Borg, 1998). As metas de esforço estão categorizadas por cores de identificação rápida para orientar a intensidade ideal a cada semana:</p>
+<div class="borg-guide">
+<div class="borg-item"><strong><span class="dot green"></span>Leve a Moderado [Borg 3-4]</strong>Exercício confortável. O corpo aquece levemente e a respiração permanece controlada. Consegue conversar normalmente.</div>
+<div class="borg-item"><strong><span class="dot yellow"></span>Moderado [Borg 4-5]</strong>Exercício ativo. A respiração acelera, mas ainda permite conversar através de frases curtas.</div>
+<div class="borg-item"><strong><span class="dot orange"></span>Moderado a Firme [Borg 5-6]</strong>Exercício firme. O músculo trabalha com presença. As últimas repetições exigem foco, mas sem perder a postura correta.</div>
+<div class="borg-item"><strong><span class="dot red"></span>Firme a Um Pouco Pesado [Borg 6-7]</strong>Exercício pesado. Concentração total. O esforço é evidente nas últimas repetições, sem atingir a exaustão extrema.</div>
 </div>
-<div class="card figure-card figure-compact full-span" style="margin-top:18px">
-<div class="section-head" style="margin-bottom:6px">
-<h2 style="font-size:30px">Gráfico 1. Progressão planejada em 12 semanas</h2>
-<span class="badge">apoio visual</span>
-<p>O gráfico resume a lógica de progressão gradual: primeiro consolidar tolerância e execução, depois ampliar volume e intensidade sem atingir exaustão.</p>
 </div>
-<svg aria-label="Gráfico de linhas mostrando progressão do treino" role="img" viewbox="0 0 620 320" width="100%">
-<rect fill="#fbfcff" height="240" rx="20" stroke="#e4ebf4" width="530" x="50" y="20"></rect>
-<line stroke="#b6c2d6" stroke-width="2" x1="90" x2="540" y1="230" y2="230"></line>
-<line stroke="#b6c2d6" stroke-width="2" x1="90" x2="90" y1="50" y2="230"></line>
-<polyline fill="none" points="120,200 240,160 360,136 480,95" stroke="#2c63ff" stroke-linecap="round" stroke-width="5"></polyline>
-<polyline fill="none" points="120,188 240,154 360,128 480,78" stroke="#f5b400" stroke-linecap="round" stroke-width="5"></polyline>
-<g fill="#2c63ff"><circle cx="120" cy="200" r="7"></circle><circle cx="240" cy="160" r="7"></circle><circle cx="360" cy="136" r="7"></circle><circle cx="480" cy="95" r="7"></circle></g>
-<g fill="#f5b400"><circle cx="120" cy="188" r="7"></circle><circle cx="240" cy="154" r="7"></circle><circle cx="360" cy="128" r="7"></circle><circle cx="480" cy="78" r="7"></circle></g>
-<g fill="#53627a" font-size="13" font-weight="700">
-<text text-anchor="middle" x="120" y="248">S1-2</text>
-<text text-anchor="middle" x="240" y="248">S3-4</text>
-<text text-anchor="middle" x="360" y="248">S5-8</text>
-<text text-anchor="middle" x="480" y="248">S9-12</text>
-<text fill="#2c63ff" x="196" y="34">Carga/intensidade</text>
-<text fill="#f5b400" x="364" y="34">Tempo aeróbico</text>
-</g>
-</svg>
-<p class="figcaption">A progressão não é agressiva: inicia com baixa dose, consolida tolerância e aumenta volume/intensidade apenas quando há janela adaptativa. <span class="source amber">Hurst et al., 2022</span> <span class="source">Tan et al., 2024</span></p>
-</div>
+<div class="section-head" style="margin-top:28px"><h2 style="font-size:30px">Bloco 1: Adaptação e Sobrecarga Inicial (Semanas 1 a 6)</h2></div>
+<div class="card period-detail"><h3>Semanas 1 e 2: Adaptação Neuromuscular e Tolerância ao Esforço</h3><div class="period-meta"><p><strong>Frequência (F):</strong> 3 dias/semana (Seg, Qua, Sex)</p><p><strong>Tempo (T) / Descanso:</strong> 120 segundos entre as séries para manejo da fadiga oncológica. Tempo total da sessão: ~25 minutos.</p></div><table class="exercise-table period-table-v2"><thead><tr><th>Componente</th><th>Exercício / atividade</th><th>Volume (séries x repetições / tempo)</th><th>Intensidade / carga (Escala de Borg CR-10)</th></tr></thead><tbody><tr><td>Aeróbico</td><td>Cicloergômetro ou caminhada em plano horizontal</td><td>1 sessão de 5 a 10 minutos contínuos</td><td><span class="dot green"></span>3 a 4 (Leve a Moderado)</td></tr><tr><td>Resistido</td><td>Sentar e levantar da cadeira com apoio das mãos</td><td>2 séries de 8 repetições</td><td><span class="dot green"></span>3 a 4 (Leve a Moderado)</td></tr><tr><td>Resistido</td><td>Remada sentada com faixa elástica (tensionamento leve)</td><td>2 séries de 10 repetições</td><td><span class="dot green"></span>3 a 4 (Leve a Moderado)</td></tr><tr><td>Resistido</td><td>Elevação de panturrilha sentada</td><td>2 séries de 12 repetições</td><td><span class="dot green"></span>3 a 4 (Leve a Moderado)</td></tr><tr><td>Equilíbrio</td><td>Apoio unipodal com suporte das mãos</td><td>2 séries de 20 segundos por perna</td><td>Estabilidade Controlada</td></tr></tbody></table></div>
+<div class="card period-detail"><h3>Semanas 3 e 4: Sobrecarga Linear Progressiva Inicial</h3><div class="period-meta"><p><strong>Frequência (F):</strong> 3 dias/semana (Seg, Qua, Sex)</p><p><strong>Tempo (T) / Descanso:</strong> 90 segundos entre as séries. Tempo total da sessão: ~30 minutos.</p></div><table class="exercise-table period-table-v2"><thead><tr><th>Componente</th><th>Exercício / atividade</th><th>Volume (séries x repetições / tempo)</th><th>Intensidade / carga (Escala de Borg CR-10)</th></tr></thead><tbody><tr><td>Aeróbico</td><td>Cicloergômetro ou caminhada (variação leve de inclinação)</td><td>1 sessão de 15 minutos contínuos</td><td><span class="dot yellow"></span>4 a 5 (Moderado)</td></tr><tr><td>Resistido</td><td>Sentar e levantar da cadeira (sem apoio das mãos)</td><td>3 séries de 8 repetições</td><td><span class="dot yellow"></span>4 a 5 (Moderado)</td></tr><tr><td>Resistido</td><td>Remada sentada com faixa elástica (maior tensão)</td><td>3 séries de 10 repetições</td><td><span class="dot yellow"></span>4 a 5 (Moderado)</td></tr><tr><td>Resistido</td><td>Elevação de panturrilha em pé (com apoio das mãos)</td><td>3 séries de 12 repetições</td><td><span class="dot yellow"></span>4 a 5 (Moderado)</td></tr><tr><td>Equilíbrio</td><td>Marcha estacionária elevando os joelhos</td><td>2 séries de 30 segundos</td><td>Ritmo Cadenciado</td></tr></tbody></table></div>
+<div class="card period-detail"><h3>Semanas 5 e 6: Consolidação do Volume e Estímulo de Hipertrofia</h3><div class="period-meta"><p><strong>Frequência (F):</strong> 3 dias/semana (Seg, Qua, Sex)</p><p><strong>Tempo (T) / Descanso:</strong> 60 a 90 segundos entre as séries. Tempo total da sessão: ~35 - 40 minutos.</p></div><table class="exercise-table period-table-v2"><thead><tr><th>Componente</th><th>Exercício / atividade</th><th>Volume (séries x repetições / tempo)</th><th>Intensidade / carga (Escala de Borg CR-10)</th></tr></thead><tbody><tr><td>Aeróbico</td><td>Cicloergômetro ou caminhada ritmada</td><td>1 sessão de 20 minutos contínuos</td><td><span class="dot orange"></span>5 a 6 (Moderado a Firme)</td></tr><tr><td>Resistido</td><td>Agachamento livre (até a altura da cadeira)</td><td>3 séries de 10 repetições</td><td><span class="dot orange"></span>5 a 6 (Moderado a Firme)</td></tr><tr><td>Resistido</td><td>Supino sentado com faixa elástica ou halteres leves</td><td>3 séries de 10 repetições</td><td><span class="dot orange"></span>5 a 6 (Moderado a Firme)</td></tr><tr><td>Resistido</td><td>Elevação de panturrilha em pé (sem apoio / progressão)</td><td>3 séries de 15 repetições</td><td><span class="dot orange"></span>5 a 6 (Moderado a Firme)</td></tr><tr><td>Equilíbrio</td><td>Caminhada em linha reta (calcanhar-dedos)</td><td>2 séries de 10 passos</td><td>Passos Firmes</td></tr></tbody></table></div>
+<div class="section-head" style="margin-top:28px"><h2 style="font-size:30px">Bloco 2: Progressão Avançada e Alvos Clínicos (Semanas 7 a 12)</h2></div>
+<div class="card period-detail"><h3>Semanas 7 e 8: Transição de Volume e Sobrecarga Ativa</h3><div class="period-meta"><p><strong>Frequência (F):</strong> 3 dias/semana (Seg, Qua, Sex)</p><p><strong>Tempo (T) / Descanso:</strong> 60 a 90 segundos entre as séries. Tempo total da sessão: ~45 min.</p></div><table class="exercise-table period-table-v2"><thead><tr><th>Componente</th><th>Exercício / atividade</th><th>Volume (séries x repetições / tempo)</th><th>Intensidade / carga (Escala de Borg CR-10)</th></tr></thead><tbody><tr><td>Aeróbico</td><td>Cicloergômetro ou caminhada contínua</td><td>1 sessão de 25 minutos</td><td><span class="dot orange"></span>5 a 6 (Moderado a Firme)</td></tr><tr><td>Resistido</td><td>Agachamento livre com isometria de 2s embaixo</td><td>3 séries de 10 repetições</td><td><span class="dot orange"></span>5 a 6 (Moderado a Firme)</td></tr><tr><td>Resistido</td><td>Remada sentada com faixa elástica (tensão forte)</td><td>3 séries de 12 repetições</td><td><span class="dot orange"></span>5 a 6 (Moderado a Firme)</td></tr><tr><td>Resistido</td><td>Desenvolvimento de ombros sentado com halteres leves</td><td>3 séries de 10 repetições</td><td><span class="dot orange"></span>5 a 6 (Moderado a Firme)</td></tr><tr><td>Resistido</td><td>Elevação de panturrilha unilateral em pé (com apoio)</td><td>3 séries de 10 repetições por perna</td><td><span class="dot orange"></span>5 a 6 (Moderado a Firme)</td></tr><tr><td>Equilíbrio</td><td>Alcance multidirecional em apoio unipodal</td><td>2 séries de 5 alcances por perna</td><td>Controle de Tronco</td></tr></tbody></table></div>
+<div class="card period-detail"><h3>Semanas 9 e 10: Pico de Volume e Estímulo Hipertrófico</h3><div class="period-meta"><p><strong>Frequência (F):</strong> 3 dias/semana (Seg, Qua, Sex)</p><p><strong>Tempo (T) / Descanso:</strong> 60 segundos entre as séries. Tempo total da sessão: ~50 min.</p></div><table class="exercise-table period-table-v2"><thead><tr><th>Componente</th><th>Exercício / atividade</th><th>Volume (séries x repetições / tempo)</th><th>Intensidade / carga (Escala de Borg CR-10)</th></tr></thead><tbody><tr><td>Aeróbico</td><td>Caminhada ou cicloergômetro com variação de carga/ritmo</td><td>1 sessão de 30 minutos</td><td><span class="dot orange"></span>6 (Firme)</td></tr><tr><td>Resistido</td><td>Leg press horizontal ou agachamento com halter leve</td><td>3 séries de 12 repetições</td><td><span class="dot orange"></span>6 (Firme)</td></tr><tr><td>Resistido</td><td>Supino sentado na máquina ou com elástico (tensão forte)</td><td>3 séries de 12 repetições</td><td><span class="dot orange"></span>6 (Firme)</td></tr><tr><td>Resistido</td><td>Flexão de braço na parede</td><td>3 séries de 10 repetições</td><td><span class="dot orange"></span>6 (Firme)</td></tr><tr><td>Resistido</td><td>Elevação de panturrilha em pé (fase excêntrica lenta de 3s)</td><td>3 séries de 15 repetições</td><td><span class="dot orange"></span>6 (Firme)</td></tr><tr><td>Equilíbrio</td><td>Marcha lateral com faixa elástica suave nos tornozelos</td><td>2 séries de 10 passos para cada lado</td><td>Resistência Lateral</td></tr></tbody></table></div>
+<div class="card period-detail"><h3>Semanas 11 e 12: Consolidação, Autonomia e Alvo de Tempo Máximo</h3><div class="period-meta"><p><strong>Frequência (F):</strong> 3 dias/semana (Seg, Qua, Sex)</p><p><strong>Tempo (T) / Descanso:</strong> 60 segundos entre as séries. Tempo total da sessão: ~55 min.</p></div><table class="exercise-table period-table-v2"><thead><tr><th>Componente</th><th>Exercício / atividade</th><th>Volume (séries x repetições / tempo)</th><th>Intensidade / carga (Escala de Borg CR-10)</th></tr></thead><tbody><tr><td>Aeróbico</td><td>Cicloergômetro ou caminhada contínua em ritmo firme</td><td>1 sessão de 35 minutos</td><td><span class="dot red"></span>6 a 7 (Firme a Um Pouco Pesado)</td></tr><tr><td>Resistido</td><td>Agachamento livre (com ênfase na velocidade de subida)</td><td>3 séries de 12 repetições</td><td><span class="dot red"></span>6 a 7 (Firme a Um Pouco Pesado)</td></tr><tr><td>Resistido</td><td>Remada aberta + Extensão de tríceps com elástico</td><td>3 séries de 10 repetições (combinado)</td><td><span class="dot red"></span>6 a 7 (Firme a Um Pouco Pesado)</td></tr><tr><td>Resistido</td><td>Rosca bíceps com halteres</td><td>3 séries de 12 repetições</td><td><span class="dot red"></span>6 a 7 (Firme a Um Pouco Pesado)</td></tr><tr><td>Resistido</td><td>Elevação de panturrilha em pé no degrau (maior amplitude)</td><td>3 séries de 15 repetições</td><td><span class="dot red"></span>6 a 7 (Firme a Um Pouco Pesado)</td></tr><tr><td>Equilíbrio</td><td>Caminhada sobre linha com desvios de obstáculos baixos</td><td>2 séries de 1 minuto</td><td>Atenção e Agilidade</td></tr></tbody></table></div>
 </section>
 <section class="panel phase-matrix" id="matrizdecisao">
 <div class="section-head">
